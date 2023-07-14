@@ -41,8 +41,9 @@ body {
 }
 
 .parallax img#gate-left {
-    position: fixed;
-    transform: translateX(-282px);
+   
+    transform: translateY(250px) scaleX(-1);
+    width: 300px;
 }
 
 .parallax img#gate-right {
