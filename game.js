@@ -32,7 +32,47 @@ gameScene.create = function(){
       bush.setDisplaySize(bushSize,bushSize)
       bushes[i]=bush
     }
+    // add player to the physics of the game
+    this.physics.add.existing(this.player);
+
+    // arrows controller
+    this.cursors = this.input.keyboard.createCursorKeys();
+
+    this.checkCollision = function(x, y) {
+        const playerBounds = this.player.getBounds();
+        const playerNewBounds = new Phaser.Geom.Rectangle(x - playerBounds.width / 2, y - playerBounds.height / 2, playerBounds.width, playerBounds.height);
+    
+        let collided = false;
+        // check if any bush intersects with player updated boundaries
+        bushes.forEach(bush => {
+          
+          const bushBounds = bush.getBounds();
+          if (Phaser.Geom.Intersects.RectangleToRectangle(playerNewBounds, bushBounds)) {
+            collided = true;
+            return false; // Stop the iteration if collision detected
+          }
+        });
+        return collided;
+      };
 }
+
+gameScene.update = function(){
+
+    const speed = 3; // moves 3px in every direction
+  
+    // checking if the player is pressing an arrow and also not colliding with barriers.
+    if (this.cursors.up.isDown && !this.checkCollision(this.player.x, this.player.y - speed)) {
+      this.player.y -= speed;
+    } else if (this.cursors.down.isDown && !this.checkCollision(this.player.x, this.player.y + speed)) {
+      this.player.y += speed;
+    }
+    if (this.cursors.left.isDown && !this.checkCollision(this.player.x - speed, this.player.y)) {
+      this.player.x -= speed;
+    } else if (this.cursors.right.isDown && !this.checkCollision(this.player.x + speed, this.player.y)) {
+      this.player.x += speed;
+    }
+    
+  };
 
 
 let config = {
