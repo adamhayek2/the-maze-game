@@ -1,15 +1,26 @@
+
+
+
+
+
 let gameScene = new Phaser.Scene('Game');
 
 gameScene.preload = function(){
+  this.load.image('background', 'assets/Christmas.png');
   this.load.image('player','Assets/walking.png');
   this.load.image('bush','Assets/bush.png');
+  this.load.image('coin','Assets/coin.gif');
 };
 
 gameScene.create = function(){
-  
+    this.add.image(0, 0, 'background').setOrigin(0, 0);
     // added player and set size
     this.player = this.add.sprite(190,180,'player');
     this.player.setDisplaySize(20,30)
+
+    this.coin = this.add.image(50,50,"coin")
+    this.coin.setDisplaySize(50,50)
+    this.coin.play('animationKey');
   
     const bushSize = 40;
     // coordinates for bushes
@@ -71,6 +82,11 @@ gameScene.update = function(){
     } else if (this.cursors.right.isDown && !this.checkCollision(this.player.x + speed, this.player.y)) {
       this.player.x += speed;
     }
+
+    if (this.player.x > 900) {
+        // Game win 
+        this.add.text(540, 360, 'You Win!', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
+      }
     
   };
 
@@ -89,5 +105,5 @@ let config = {
     }
   };
   
-  let game = new Phaser.Game(config);
+let game = new Phaser.Game(config);
   
