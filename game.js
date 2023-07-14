@@ -1,6 +1,6 @@
 
 let Maze1Scene = new Phaser.Scene('Game');
-
+console.log("hi")
 Maze1Scene.preload = function(){
   this.load.image('background', 'assets/Christmas.png');
   this.load.image('player','assets/walking.png');
@@ -17,17 +17,6 @@ Maze1Scene.create = function(){
     this.player = this.add.sprite(190,180,'player');
     this.player.setDisplaySize(20,30)
     
-    this.coin = [
-    this.add.sprite(360,260,'coin1'),
-    this.add.sprite(240,420,'coin1'),
-    this.add.sprite(400,420,'coin1'),
-    this.add.sprite(600,540,'coin1'),
-    this.add.sprite(800,180,'coin1'),
-    this.add.sprite(840,380,'coin1'),
-    this.add.sprite(680,420,'coin1'),
-    this.add.sprite(560,260,'coin1'),
-  
-  
   coin =[
     this.physics.add.sprite(360,260,'coin'),
     this.physics.add.sprite(240,420,'coin'),
@@ -194,13 +183,6 @@ Maze1Scene.update = function(){
     }
 
   }
-
-
-
-
-
-
-
 
 let config = {
     type: Phaser.AUTO,
