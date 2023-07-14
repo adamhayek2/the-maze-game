@@ -102,7 +102,23 @@ Maze1Scene.update = function(){
 
   Maze1WinScene.create = function() {
     this.add.text(540, 360, 'You Win!', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
-    };
+  
+    let enterText = this.add.text(540, 430, 'Press Enter to Continue', {
+      fontSize: '24px',
+      color: '#ffffff'
+    });
+    enterText.setOrigin(0.5);
+  };
+
+  Maze1WinScene.update = function(){
+
+    let pressEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
+
+    if(pressEnter.isDown){
+      this.scene.start('Game');
+    }
+  }
+
 
     
 
