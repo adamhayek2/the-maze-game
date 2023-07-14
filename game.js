@@ -4,12 +4,14 @@ let Maze1Scene = new Phaser.Scene('Game');
 Maze1Scene.preload = function(){
   this.load.image('background', 'assets/Christmas.png');
   this.load.image('player','assets/walking.png');
-  this.load.image('bush','assets/bush.png');
-  this.load.image('coin1','assets/coin1.jpg')  
+  this.load.image('bush','assets/bush.png');  
+  this.load.spritesheet('coin', 'assets/tile001.png', {
+    frameWidth: 50,
+    frameHeight: 50
+  });
 };
-
+let coin =[]
 Maze1Scene.create = function(){
-  this.scene.start('Game2')
     this.add.image(0, 0, 'background').setOrigin(0, 0);
     // added player and set size
     this.player = this.add.sprite(190,180,'player');
@@ -25,9 +27,34 @@ Maze1Scene.create = function(){
     this.add.sprite(680,420,'coin1'),
     this.add.sprite(560,260,'coin1'),
   
-  ];
-
   
+  coin =[
+    this.physics.add.sprite(360,260,'coin'),
+    this.physics.add.sprite(240,420,'coin'),
+    this.physics.add.sprite(400,420,'coin'),
+    this.physics.add.sprite(600,540,'coin'),
+    this.physics.add.sprite(800,180,'coin'),
+    this.physics.add.sprite(840,380,'coin'),
+    this.physics.add.sprite(680,420,'coin'),
+    this.physics.add.sprite(560,260,'coin'),
+  ] 
+
+  this.anims.create({
+    key: 'round',
+    frames: this.anims.generateFrameNumbers('coin',{start:0, end: 7}),
+    frameRate: 10,
+    repeat: -1
+  });
+
+  for(let i=0;i<coin.length;i++){
+    coin[i].play('round');
+  }
+  
+
+  for(let i=0;i<coin.length;i++){
+    this.physics.add.overlap(this.player, coin[i], collectCoin, null, this);
+  }
+
 
 
     const bushSize = 40;
@@ -73,8 +100,11 @@ Maze1Scene.create = function(){
         });
         return collided;
       };
-}
 
+    }
+    function collectCoin(player,coin){
+      coin.disableBody(true, true);
+    }
 Maze1Scene.update = function(){
 
     const speed = 3; // moves 3px in every direction
