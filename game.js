@@ -1,27 +1,34 @@
 
+let Maze1Scene = new Phaser.Scene('Game');
 
-
-
-
-let gameScene = new Phaser.Scene('Game');
-
-gameScene.preload = function(){
+Maze1Scene.preload = function(){
   this.load.image('background', 'assets/Christmas.png');
-  this.load.image('player','Assets/walking.png');
-  this.load.image('bush','Assets/bush.png');
-  this.load.image('coin','Assets/coin.gif');
+  this.load.image('player','assets/walking.png');
+  this.load.image('bush','assets/bush.png');
+  this.load.image('coin1','assets/coin1.jpg')  
 };
 
-gameScene.create = function(){
+Maze1Scene.create = function(){
     this.add.image(0, 0, 'background').setOrigin(0, 0);
     // added player and set size
     this.player = this.add.sprite(190,180,'player');
     this.player.setDisplaySize(20,30)
-
-    this.coin = this.add.image(50,50,"coin")
-    this.coin.setDisplaySize(50,50)
-    this.coin.play('animationKey');
+    
+    this.coin = [
+    this.add.sprite(360,260,'coin1'),
+    this.add.sprite(240,420,'coin1'),
+    this.add.sprite(400,420,'coin1'),
+    this.add.sprite(600,540,'coin1'),
+    this.add.sprite(800,180,'coin1'),
+    this.add.sprite(840,380,'coin1'),
+    this.add.sprite(680,420,'coin1'),
+    this.add.sprite(560,260,'coin1'),
   
+  ];
+
+  
+
+
     const bushSize = 40;
     // coordinates for bushes
     let bushes = [
@@ -67,7 +74,7 @@ gameScene.create = function(){
       };
 }
 
-gameScene.update = function(){
+Maze1Scene.update = function(){
 
     const speed = 3; // moves 3px in every direction
   
@@ -85,10 +92,25 @@ gameScene.update = function(){
 
     if (this.player.x > 900) {
         // Game win 
-        this.add.text(540, 360, 'You Win!', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
+        this.scene.start('Win');
       }
     
   };
+
+
+  let Maze1WinScene = new Phaser.Scene('Win');
+
+  Maze1WinScene.create = function() {
+    this.add.text(540, 360, 'You Win!', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
+    };
+
+    
+
+
+
+
+
+
 
 
 let config = {
@@ -96,7 +118,7 @@ let config = {
     width: 1080,
     height: 720,
     backgroundColor: 0x000000,
-    scene: gameScene,
+    scene: [Maze1Scene,Maze1WinScene],
     physics: {
       default: 'arcade',
       arcade: {
@@ -105,5 +127,11 @@ let config = {
     }
   };
   
+
 let game = new Phaser.Game(config);
+
+
+
+
+
   
