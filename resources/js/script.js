@@ -11,36 +11,106 @@ window.addEventListener('scroll', () =>{
     text.style.fontSize = fontSize + 'px';
     var leftOffset = value / -5;
     text.style.left =  50 + leftOffset + '%';
-
-
-
-
-
     treeLeft.style.left = value * -1.5 + 'px';
     treeRight.style.left = value * 1.5 + 'px';
     gateLeft.style.left = value * 1.8+ 'px';
     // gateRight.style.left = value * -0.5 + 'px';
 })
 
+// Snow from https://codepen.io/radum/pen/xICAB
 
-var content = document.getElementById('text');
-// var parallaxContainer = document.getElementById('parallax');
-var maxScroll = parallaxContainer.offsetTop;
+window.addEventListener("load", function () {
 
-window.addEventListener('scroll', function() {
-  var scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-  // Reduce font size based on scroll position
-  var fontSize = 48 - scrollTop / 10; // Adjust the division factor to control the rate of font size reduction
-  content.style.fontSize = fontSize + 'px';
-
-  // Move content to the top left corner based on scroll position
-  var leftOffset = -scrollTop / 5; // Adjust the division factor to control the rate of horizontal movement
-
-  // Limit the left offset to stop at the corner
-  if (leftOffset < 0) {
-    leftOffset = Math.max(leftOffset, -maxScroll / 5); // Adjust the division factor to control the rate of horizontal movement
-  }
-
-  content.style.left = 50 + leftOffset + '%';
-});
+    var COUNT = 300;
+    var masthead = document.querySelector('.sky');
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    var width = masthead.clientWidth;
+    var height = masthead.clientHeight;
+    var i = 0;
+    var active = false;
+  
+    function onResize() {
+      width = masthead.clientWidth;
+      height = masthead.clientHeight;
+      canvas.width = width;
+      canvas.height = height;
+      ctx.fillStyle = '#FFF';
+  
+      var wasActive = active;
+      active = width > 600;
+  
+      if (!wasActive && active)
+        requestAnimFrame(update);
+    }
+  
+    var Snowflake = function () {
+      this.x = 0;
+      this.y = 0;
+      this.vy = 0;
+      this.vx = 0;
+      this.r = 0;
+  
+      this.reset();
+    }
+  
+    Snowflake.prototype.reset = function() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * -height;
+      this.vy = 1 + Math.random() * 3;
+      this.vx = 0.5 - Math.random();
+      this.r = 1 + Math.random() * 2;
+      this.o = 0.5 + Math.random() * 0.5;
+    }
+  
+    canvas.style.position = 'absolute';
+    canvas.style.left = canvas.style.top = '0';
+  
+    var snowflakes = [], snowflake;
+    for (i = 0; i < COUNT; i++) {
+      snowflake = new Snowflake();
+      snowflake.reset();
+      snowflakes.push(snowflake);
+    }
+  
+    function update() {
+  
+      ctx.clearRect(0, 0, width, height);
+  
+      if (!active)
+        return;
+  
+      for (i = 0; i < COUNT; i++) {
+        snowflake = snowflakes[i];
+        snowflake.y += snowflake.vy;
+        snowflake.x += snowflake.vx;
+  
+        ctx.globalAlpha = snowflake.o;
+        ctx.beginPath();
+        ctx.arc(snowflake.x, snowflake.y, snowflake.r, 0, Math.PI * 2, false);
+        ctx.closePath();
+        ctx.fill();
+  
+        if (snowflake.y > height) {
+          snowflake.reset();
+        }
+      }
+  
+      requestAnimFrame(update);
+    }
+  
+    // shim layer with setTimeout fallback
+    window.requestAnimFrame = (function(){
+      return  window.requestAnimationFrame       ||
+              window.webkitRequestAnimationFrame ||
+              window.mozRequestAnimationFrame    ||
+              function( callback ){
+                window.setTimeout(callback, 1000 / 60);
+              };
+    })();
+  
+    onResize();
+  
+  
+    masthead.appendChild(canvas);
+  });
