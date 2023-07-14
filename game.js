@@ -1,6 +1,6 @@
 
 let Maze1Scene = new Phaser.Scene('Game');
-console.log("hi")
+
 Maze1Scene.preload = function(){
   this.load.image('background', 'assets/Christmas.png');
   this.load.image('player','assets/walking.png');
@@ -10,13 +10,13 @@ Maze1Scene.preload = function(){
     frameHeight: 50
   });
 };
-let coin =[]
+let coin = []
 Maze1Scene.create = function(){
-    this.add.image(0, 0, 'background').setOrigin(0, 0);
-    // added player and set size
-    this.player = this.add.sprite(190,180,'player');
-    this.player.setDisplaySize(20,30)
-    
+  this.add.image(0, 0, 'background').setOrigin(0, 0);
+  // added player and set size
+  this.player = this.physics.add.sprite(190,180,'player');
+  this.player.setDisplaySize(20,30)
+  
   coin =[
     this.physics.add.sprite(360,260,'coin'),
     this.physics.add.sprite(240,420,'coin'),
@@ -38,7 +38,6 @@ Maze1Scene.create = function(){
   for(let i=0;i<coin.length;i++){
     coin[i].play('round');
   }
-  
 
   for(let i=0;i<coin.length;i++){
     this.physics.add.overlap(this.player, coin[i], collectCoin, null, this);
@@ -141,14 +140,13 @@ Maze1Scene.update = function(){
 
   let Maze2Scene = new Phaser.Scene('Game2');
 
-  Maze1Scene.preload = function(){
+  Maze2Scene.preload = function(){
     this.load.image('background', 'assets/Christmas.png');
     this.load.image('player','assets/walking.png');
-    this.load.image('bush','assets/bush.png');
-    this.load.image('coin1','assets/coin1.jpg')  
+    this.load.image('bush','assets/bush.png'); 
   };
 
-    Maze2Scene.create = function() {
+  Maze2Scene.create = function() {
 
     this.add.image(0, 0, 'background').setOrigin(0, 0);
     this.player = this.add.sprite(135,135,'player');
@@ -175,21 +173,31 @@ Maze1Scene.update = function(){
       [240,380],[240,345],[240,310],[240,275],[205,275],[205,450],[240,450],[275,450],[310,450],[345,450],[380,450],[380,415],[415,415],[380,380],
       [380,345],[380,310],[415,310],[450,310],[450,345],[450,275],[450,240],[415,240],[380,240],[380,205],
     ];
-    // creating bush using the corrdinates, setting thier sizes then replacing the coordinate with a sprite.
+  
     for (let i = 0; i < bushes.length; i++) {
       bush = this.add.sprite(bushes[i][0], bushes[i][1], 'bush');
       bush.setDisplaySize(bushSize,bushSize)
       bushes[i]=bush
     }
-
+  
   }
+
+
+    
+
+
+
+
+
+
+
 
 let config = {
     type: Phaser.AUTO,
     width: 1080,
     height: 720,
     backgroundColor: 0x000000,
-    scene: [Maze1Scene,Maze1WinScene, Maze2Scene ],
+    scene: [Maze1Scene,Maze1WinScene,Maze2Scene],
     physics: {
       default: 'arcade',
       arcade: {
