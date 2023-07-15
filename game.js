@@ -264,8 +264,8 @@ gameOverScene1.update = function(){
       this.physics.add.sprite(945,135,'coin'),
       this.physics.add.sprite(940,595,'coin'),
       this.physics.add.sprite(940,520,'coin'),
-      this.physics.add.sprite(800,555,'coin'),
-      this.physics.add.sprite(870,555,'coin'),
+      this.physics.add.sprite(800,595,'coin'),
+      this.physics.add.sprite(870,595,'coin'),
       this.physics.add.sprite(730,485,'coin'),
       this.physics.add.sprite(770,485,'coin'),
       this.physics.add.sprite(135,595,'coin'),
@@ -302,7 +302,7 @@ gameOverScene1.update = function(){
       [100, 100],[100, 135],[100, 170],[100, 205],[100, 240],[100, 275],[100, 310],[100, 345],[100, 380],[100, 415],[100, 450],
       [100, 485],[100, 520],[100, 555],[100, 590],[100, 625],[135, 625],[170, 625],[205, 625],[240, 625],[275, 625],[310, 625],[345, 625],[380, 625],
       [415, 625],[450, 625],[485, 625],[520, 625],[555, 625],[590, 625],[625, 625],[660, 625],[695, 625],[730, 625],[765, 625],[800, 625],[835, 625],
-      [870, 625],[905, 625],[940, 625],[975, 625],[975, 590],[975, 555],[975, 520],[975, 485],[975, 450],[975, 415],[975, 380],[975, 345],[975, 310],
+      [870, 625],[905, 625],[940, 625],[975, 625],[975, 555],[975, 520],[975, 485],[975, 450],[975, 415],[975, 380],[975, 345],[975, 310],
       [975, 275],[975, 240],[975, 205],[975, 170],[975, 135],[975, 100],[940, 100],[905, 100],[870, 100],[835, 100],[800, 100],[765, 100],[730, 100],
       [695, 100],[660, 100],[625, 100],[590, 100],[555, 100],[520, 100],[485, 100],[450, 100],[415, 100],[380, 100],[345, 100],[310, 100],[275, 100],
       [240, 100],[205, 100],[170, 100],[135, 100],[170, 135],[450,135],[240,170],[310,170],[380,170],[415,170],[450,170],[520,170],[555,170],[590,170],
@@ -366,10 +366,37 @@ gameOverScene1.update = function(){
 
     if (this.player.x > 1000) {
         // Game win 
-        this.scene.start('Win');
+        this.scene.start('Win2');
       }
     
   };
+  // Maze 2 won
+  let Maze2WinScene = new Phaser.Scene('Win2');
+
+  Maze2WinScene.create = function() {
+    this.add.text(540, 360, 'You Win!', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
+  
+    let coinText2 = this.add.text(540, 400, 'Coins Collected: ' + coincount2, {
+      fontSize: '32px',
+      color: '#ffffff'
+    });
+    coinText2.setOrigin(0.5);
+  
+    let enterText2 = this.add.text(540, 470, 'Press Enter to Continue', {
+      fontSize: '24px',
+      color: '#ffffff'
+    });
+    enterText2.setOrigin(0.5);
+  };
+
+  Maze2WinScene.update = function(){
+
+    let pressEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
+
+    if(pressEnter.isDown){
+      this.scene.start('Game');
+    }
+  }
 
   
 
@@ -378,7 +405,7 @@ let config = {
     width: 1080,
     height: 720,
     backgroundColor: 0x000000,
-    scene: [Maze1Scene,Maze1WinScene,gameOverScene1,Maze2Scene],
+    scene: [Maze1Scene,Maze1WinScene,gameOverScene1,Maze2Scene,Maze2WinScene],
     physics: {
       default: 'arcade',
       arcade: {
