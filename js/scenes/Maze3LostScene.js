@@ -1,10 +1,9 @@
-class Maze2LostScene extends Phaser.Scene{
+class Maze3LostScene extends Phaser.Scene{
     constructor(){
         super({
-            key:CST.SCENES.LOSE2
+            key:CST.SCENES.LOSE3
         })
     }
-    
 
     create(){
         this.add.text(540, 360, 'Game Over!', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
@@ -20,7 +19,7 @@ class Maze2LostScene extends Phaser.Scene{
         let pressEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
   
         if(pressEnter.isDown){
-        this.scene.start(CST.SCENES.MAZE2);
+        this.scene.start(CST.SCENES.MAZE3);
         }
 
     }

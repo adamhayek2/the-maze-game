@@ -8,5 +8,7 @@
         WIN2: "WIN2",
         LOSE2: "LOSE2",
         MAZE3: "MAZE3",
+        WIN3: "WIN3",
+        LOSE3: "LOSE3",
     }
 }
