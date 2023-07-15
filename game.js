@@ -23,6 +23,7 @@ Maze1Scene.create = function(){
   // added player and set size
   this.player = this.physics.add.sprite(190,180,'player');
   this.player.setDisplaySize(20,30)
+  
 
   wallet_text = this.add.text(190, 90, coincount, { fontFamily: 'Arial', fontSize: '20px', fill: 'red' });
   score_coin = this.physics.add.sprite(160, 100, 'coin');
