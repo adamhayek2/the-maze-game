@@ -1,10 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap'); */
+@font-face {
+    font-family: "ThaleahFat";
+    src: url("../ThaleahFat.ttf");
+}
 
+
+@font-face {
+    font-family: 'thaleahfatmedium';
+    src: url('../fonts/thaleahfat-webfont.woff2') format('woff2'),
+         url('../fonts/thaleahfat-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: thaleahfatmedium;
+}
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -27,13 +43,13 @@ header {
 }
 
 .logo {
-    font-size: 2em;
+    font-size: 3em;
     color: #fff;
     user-select: none;
 }
 .navigation a {
     position: relative;
-    font-style: 1.1em;
+    font-size: 1.5em;
     color: #fff;
     font-weight: 600;
     text-decoration: none;
@@ -68,7 +84,7 @@ header {
 
 #text {
     position: absolute;
-    font-size: 3.5em;
+    font-size: 3.1em;
     color: #1b283a;
     text-shadow: 2px 4px 5px #f9f9f9;
     transform: translate(-50%, -50%);
@@ -89,8 +105,8 @@ header {
 }
 
 .parallax img#gate-left {
-   margin-bottom: 100px;
-    transform: translateY(250px) scaleX(-1);
+    margin-bottom: 200px;
+    transform: translateY(250px);
     width: 300px;
 }
 
@@ -112,7 +128,7 @@ header {
 }
 
 .sec p {
-    font-size: 1em;
+    font-size: 2em;
     color: #fff;
     font-weight: 300;
     text-align: justify;
@@ -124,7 +140,7 @@ header {
    float: left
 }
 
-.sky {
+.hearo {
     height: 100%;
     color: #000000;
     display: block;

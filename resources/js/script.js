@@ -4,13 +4,14 @@ let treeRight = document.getElementById('tree-right');
 let gateLeft = document.getElementById('gate-left');
 let gateRight = document.getElementById('gate-right');
 
-
 window.addEventListener('scroll', () =>{
     let value = window.scrollY;
-    var fontSize = 48 - value / 10;
-    text.style.fontSize = fontSize + 'px';
+    var fontSize =  3.1 - value / 10;
+    text.style.fontSize = fontSize + 'em';
     var leftOffset = value / -5;
     text.style.left =  50 + leftOffset + '%';
+    text.style.top =  50 + leftOffset + '%';
+
     treeLeft.style.left = value * -1.5 + 'px';
     treeRight.style.left = value * 1.5 + 'px';
     gateLeft.style.left = value * 1.8+ 'px';
@@ -18,11 +19,10 @@ window.addEventListener('scroll', () =>{
 })
 
 // Snow from https://codepen.io/radum/pen/xICAB
-
 window.addEventListener("load", function () {
 
     var COUNT = 300;
-    var masthead = document.querySelector('.sky');
+    var masthead = document.querySelector('.hearo');
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
     var width = masthead.clientWidth;
@@ -50,7 +50,6 @@ window.addEventListener("load", function () {
       this.vy = 0;
       this.vx = 0;
       this.r = 0;
-  
       this.reset();
     }
   
