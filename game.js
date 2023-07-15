@@ -1,5 +1,13 @@
+let coincount = 0;
+let coincount2 = 0;
 
 let Maze1Scene = new Phaser.Scene('Game');
+
+
+let timer;
+let timerText;
+let timeInSeconds = 10;
+let wallet_text;
 
 Maze1Scene.preload = function(){
   this.load.image('background', 'assets/Christmas.png');
@@ -10,12 +18,43 @@ Maze1Scene.preload = function(){
     frameHeight: 50
   });
 };
-let coin = []
+
 Maze1Scene.create = function(){
-  this.add.image(0, 0, 'background').setOrigin(0, 0);
   // added player and set size
   this.player = this.physics.add.sprite(190,180,'player');
   this.player.setDisplaySize(20,30)
+
+  wallet_text = this.add.text(190, 90, coincount, { fontFamily: 'Arial', fontSize: '20px', fill: 'red' });
+  score_coin = this.physics.add.sprite(160, 100, 'coin');
+  score_coin.play('round');
+
+  timerText = this.add.text(800, 90, 'Time: 10s', {
+    fontSize: '24px',
+    color: '#ffffff'
+  });
+  
+
+  // Start the timer
+  timer = this.time.addEvent({
+    delay: 1000, 
+    callback: updateTimer,
+    callbackScope: this,
+    loop: true
+  });
+
+  function updateTimer(){
+    timeInSeconds--;
+    timerText.setText('Time: ' + timeInSeconds + 's');
+  
+    if (timeInSeconds <= 0) {
+      this.scene.start('GameOver');
+    }
+  }
+  function collectCoin(player,coin){
+    coin.disableBody(true, true);
+    coincount+=1;
+    wallet_text.setText(coincount);
+  }
   
   coin =[
     this.physics.add.sprite(360,260,'coin'),
@@ -42,9 +81,7 @@ Maze1Scene.create = function(){
   for(let i=0;i<coin.length;i++){
     this.physics.add.overlap(this.player, coin[i], collectCoin, null, this);
   }
-
-
-
+  
     const bushSize = 40;
     // coordinates for bushes
     let bushes = [
@@ -88,11 +125,8 @@ Maze1Scene.create = function(){
         });
         return collided;
       };
-
     }
-    function collectCoin(player,coin){
-      coin.disableBody(true, true);
-    }
+    
 Maze1Scene.update = function(){
 
     const speed = 3; // moves 3px in every direction
@@ -116,13 +150,19 @@ Maze1Scene.update = function(){
     
   };
 
-
+// Maze 1 won
   let Maze1WinScene = new Phaser.Scene('Win');
 
   Maze1WinScene.create = function() {
     this.add.text(540, 360, 'You Win!', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
   
-    let enterText = this.add.text(540, 430, 'Press Enter to Continue', {
+    let coinText = this.add.text(540, 400, 'Coins Collected: ' + coincount, {
+      fontSize: '32px',
+      color: '#ffffff'
+    });
+    coinText.setOrigin(0.5);
+  
+    let enterText = this.add.text(540, 470, 'Press Enter to Continue', {
       fontSize: '24px',
       color: '#ffffff'
     });
@@ -138,12 +178,46 @@ Maze1Scene.update = function(){
     }
   }
 
+// maze1 lost
+let gameOverScene1 = new Phaser.Scene('GameOver');
+
+gameOverScene1.create = function() {
+  this.add.text(540, 360, 'Game Over!', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
+
+
+  let enterText = this.add.text(540, 470, 'Press Enter to Play again', {
+    fontSize: '24px',
+    color: '#ffffff'
+  });
+  enterText.setOrigin(0.5);
+};
+gameOverScene1.update = function(){
+
+  let pressEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
+
+  if(pressEnter.isDown){
+    timeInSeconds = 10;
+    coincount = 0
+    this.scene.start('Game');
+  }
+}
+
+// maze 2
   let Maze2Scene = new Phaser.Scene('Game2');
+
+  let timer2;
+  let timer2Text;
+  let time2InSeconds = 20;
+  let wallet2_text;
 
   Maze2Scene.preload = function(){
     this.load.image('background', 'assets/Christmas.png');
-    this.load.image('player','assets/walking.png');
-    this.load.image('bush','assets/bush.png'); 
+  this.load.image('player','assets/walking.png');
+  this.load.image('bush','assets/bush.png');  
+  this.load.spritesheet('coin', 'assets/tile001.png', {
+    frameWidth: 50,
+    frameHeight: 50
+  });
   };
 
   Maze2Scene.create = function() {
@@ -151,6 +225,64 @@ Maze1Scene.update = function(){
     this.add.image(0, 0, 'background').setOrigin(0, 0);
     this.player = this.add.sprite(135,135,'player');
     this.player.setDisplaySize(20,30)
+
+    wallet2_text = this.add.text(190, 20, coincount2, { fontFamily: 'Arial', fontSize: '20px', fill: 'red' });
+    score_coin = this.physics.add.sprite(160, 20, 'coin');
+    score_coin.play('round');
+
+    timer2Text = this.add.text(800, 20, 'Time: 10s', {
+      fontSize: '24px',
+      color: '#000000'
+    });
+
+    timer2 = this.time.addEvent({
+      delay: 1000, 
+      callback: updateTimer2,
+      callbackScope: this,
+      loop: true
+    });
+
+    function updateTimer2(){
+      time2InSeconds--;
+      timer2Text.setText('Time: ' + time2InSeconds + 's');
+    
+      if (time2InSeconds <= 0) {
+        time2InSeconds = 20;
+        coincount2=0;
+        this.scene.start('GameOver');
+      }
+    }
+    function collectCoin2(player,coin){
+      coin.disableBody(true, true);
+      coincount2+=1;
+      wallet2_text.setText(coincount2);
+    }
+
+    coin =[
+      this.physics.add.sprite(360,260,'coin'),
+      this.physics.add.sprite(240,420,'coin'),
+      this.physics.add.sprite(400,420,'coin'),
+      this.physics.add.sprite(600,540,'coin'),
+      this.physics.add.sprite(800,180,'coin'),
+      this.physics.add.sprite(840,380,'coin'),
+      this.physics.add.sprite(680,420,'coin'),
+      this.physics.add.sprite(560,260,'coin'),
+    ] 
+  
+    this.anims.create({
+      key: 'round',
+      frames: this.anims.generateFrameNumbers('coin',{start:0, end: 7}),
+      frameRate: 10,
+      repeat: -1
+    });
+  
+    for(let i=0;i<coin.length;i++){
+      coin[i].play('round');
+    }
+  
+    for(let i=0;i<coin.length;i++){
+      this.physics.add.overlap(this.player, coin[i], collectCoin2, null, this);
+    }
     
     const bushSize = 35;
     // coordinates for bushes
@@ -179,25 +311,62 @@ Maze1Scene.update = function(){
       bush.setDisplaySize(bushSize,bushSize)
       bushes[i]=bush
     }
+
+    // add player to the physics of the game
+    this.physics.add.existing(this.player);
+
+    // arrows controller
+    this.cursors = this.input.keyboard.createCursorKeys();
+
+    this.checkCollision = function(x, y) {
+        const playerBounds = this.player.getBounds();
+        const playerNewBounds = new Phaser.Geom.Rectangle(x - playerBounds.width / 2, y - playerBounds.height / 2, playerBounds.width, playerBounds.height);
+    
+        let collided = false;
+        // check if any bush intersects with player updated boundaries
+        bushes.forEach(bush => {
+          
+          const bushBounds = bush.getBounds();
+          if (Phaser.Geom.Intersects.RectangleToRectangle(playerNewBounds, bushBounds)) {
+            collided = true;
+            return false; // Stop the iteration if collision detected
+          }
+        });
+        return collided;
+      };
   
   }
+  Maze2Scene.update = function(){
 
+    const speed = 3; // moves 3px in every direction
+  
+    // checking if the player is pressing an arrow and also not colliding with barriers.
+    if (this.cursors.up.isDown && !this.checkCollision(this.player.x, this.player.y - speed)) {
+      this.player.y -= speed;
+    } else if (this.cursors.down.isDown && !this.checkCollision(this.player.x, this.player.y + speed)) {
+      this.player.y += speed;
+    }
+    if (this.cursors.left.isDown && !this.checkCollision(this.player.x - speed, this.player.y)) {
+      this.player.x -= speed;
+    } else if (this.cursors.right.isDown && !this.checkCollision(this.player.x + speed, this.player.y)) {
+      this.player.x += speed;
+    }
 
+    if (this.player.x > 1000) {
+        // Game win 
+        this.scene.start('Win');
+      }
     
+  };
 
-
-
-
-
-
-
+  
 
 let config = {
     type: Phaser.AUTO,
     width: 1080,
     height: 720,
     backgroundColor: 0x000000,
-    scene: [Maze1Scene,Maze1WinScene,Maze2Scene],
+    scene: [Maze1Scene,Maze1WinScene,gameOverScene1,Maze2Scene],
     physics: {
       default: 'arcade',
       arcade: {
