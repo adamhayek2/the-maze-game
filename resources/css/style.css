@@ -26,7 +26,7 @@ html {
 body {
     min-height: 100vh;
     overflow-x: hidden;
-    /* background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); */
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     filter: drop-shadow(0 0 10px white);
 }  
 
@@ -75,7 +75,6 @@ header {
     color: #000000;
     display: block;
     background-image:  url('/resources/images/hero-section/background.png') ;
-    position: relative;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -88,6 +87,7 @@ header {
     align-items: center;
     height: 100vh;
     background-image: url('/resources/images/hero-section/background-2.png');
+    transform: translateY(-77px);
 }
 
 #text {
@@ -113,18 +113,17 @@ header {
 
 .parallax img#santa {
     margin-bottom: 200px;
-    transform: translateY(300px);
-    width: 200px;
-    z-index: 2;
+    transform: translateY(440px);
+    width: 150px;
+    z-index: 3;
 
 }
 
 .parallax img#home {
     position: fixed;
-    transform:scaleX(-1) translateX(-1200px) translateY(200px) ;
-    width: 300px;
+    transform: translateX(1400px) translateY(250px) ;
+    width: 400px;
     z-index: 2;
-    
 }
 
 
