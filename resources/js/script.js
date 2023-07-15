@@ -1,4 +1,4 @@
-let text = document.getElementById('text');
+
 let gateLeft = document.getElementById('santa');
 let gateRight = document.getElementById('gate-right');
 let heroParallax = document.getElementById("hero-parallax");
@@ -6,12 +6,10 @@ let heroParallax = document.getElementById("hero-parallax");
 
 window.addEventListener('scroll', () =>{
     let value = window.scrollY;
-    var fontSize =  3.1 - value / 10;
-    text.style.fontSize = fontSize + 'em';
-    var leftOffset = value / -5;
-    text.style.left =  50 + leftOffset + '%';
+    
+    
     gateLeft.style.left = value * 1.8+ 'px';
-    heroParallax.style.backgroundPositionY = value * +0.5 + 'px';
+    heroParallax.style.backgroundPositionY = value * +.4 + 'px';
 })
 
 // Snow from https://codepen.io/radum/pen/xICAB
