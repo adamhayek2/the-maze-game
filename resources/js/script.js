@@ -1,8 +1,8 @@
 let text = document.getElementById('text');
-let treeLeft = document.getElementById('tree-left');
-let treeRight = document.getElementById('tree-right');
+// let treeLeft = document.getElementById('tree-left');
+// let treeRight = document.getElementById('tree-right');
 let gateLeft = document.getElementById('santa');
-let gateRight = document.getElementById('gate-right');
+// let gateRight = document.getElementById('gate-right');
 
 window.addEventListener('scroll', () =>{
     let value = window.scrollY;
@@ -10,10 +10,10 @@ window.addEventListener('scroll', () =>{
     text.style.fontSize = fontSize + 'em';
     var leftOffset = value / -5;
     text.style.left =  50 + leftOffset + '%';
-    text.style.top =  50 + leftOffset + '%';
+    // text.style.top =  50 + leftOffset + '%';
 
-    treeLeft.style.left = value * -1.5 + 'px';
-    treeRight.style.left = value * 1.5 + 'px';
+    // treeLeft.style.left = value * -1.5 + 'px';
+    // treeRight.style.left = value * 1.5 + 'px';
     gateLeft.style.left = value * 1.8+ 'px';
     // gateRight.style.left = value * -0.5 + 'px';
 })

@@ -1,0 +1,27 @@
+/* Styles for screens with a maximum width of 600px*/
+@media (max-width: 600px) {
+    .parallax img#home {
+        transform:scaleX(-1) translateX(-250px) translateY(200px) ;
+    }
+}
+
+  /* Styles for screens with a minimum width of 601px and a maximum width of 1024px */
+  @media (min-width: 600px) and (max-width: 900px) {
+    .parallax img#home {
+        transform:scaleX(-1) translateX(-600px) translateY(200px) ;
+    }
+}
+  
+  /* Styles for screens with a minimum width of 601px and a maximum width of 1024px */
+  @media (min-width: 901px) and (max-width: 1399px) {
+    .parallax img#home {
+        transform:scaleX(-1) translateX(-1000px) translateY(200px) ;
+    }
+}
+  
+  /* Styles for screens with a minimum width of 1025px */
+  @media (min-width: 1400px) {
+    .parallax img#home {
+        transform:scaleX(-1) translateX(-1200px) translateY(200px) ;
+    }
+} 
