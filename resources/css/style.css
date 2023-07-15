@@ -18,6 +18,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: thaleahfatmedium;
+    font-weight: 100;
 }
 html {
     scroll-behavior: smooth;
@@ -39,13 +40,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    z-index: 10;
 }
 
 .logo {
     font-size: 3em;
-    color: #fff;
+    color: #000;
     user-select: none;
+    position: sticky;
 }
 .navigation a {
     position: relative;
@@ -57,12 +59,14 @@ header {
     padding: 6px 15px;
     transition: .5s;
     border-radius: 30px;
+    position: sticky;
+
 }
 .navigation a:hover, 
 .navigation a.active
 {
-    color: #333;
-    background-color: #fff;
+    color: #fff;
+    background-color: #000;
 }
 .navigation a:hover span , 
 .navigation a.active span {
