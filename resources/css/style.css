@@ -48,6 +48,7 @@ header {
     color: #000;
     user-select: none;
     position: sticky;
+    top: 0;
 }
 .navigation a {
     position: relative;
@@ -60,6 +61,8 @@ header {
     transition: .5s;
     border-radius: 30px;
     position: sticky;
+    top: 0;
+
 
 }
 .navigation a:hover, 
