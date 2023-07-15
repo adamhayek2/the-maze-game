@@ -3,7 +3,6 @@ let coincount2 = 0;
 
 let Maze1Scene = new Phaser.Scene('Game');
 
-
 let timer;
 let timerText;
 let timeInSeconds = 10;
@@ -24,7 +23,7 @@ Maze1Scene.create = function(){
   this.player = this.physics.add.sprite(190,180,'player');
   this.player.setDisplaySize(20,30)
 
-  wallet_text = this.add.text(190, 90, coincount, { fontFamily: 'Arial', fontSize: '20px', fill: 'red' });
+  wallet_text = this.add.text(190, 90, coincount, { fontFamily: 'Arial', fontSize: '20px', fill: 'white' });
   score_coin = this.physics.add.sprite(160, 100, 'coin');
   score_coin.play('round');
 
@@ -47,7 +46,7 @@ Maze1Scene.create = function(){
     timerText.setText('Time: ' + timeInSeconds + 's');
   
     if (timeInSeconds <= 0) {
-      this.scene.start('GameOver');
+       this.scene.start('GameOver');
     }
   }
   function collectCoin(player,coin){
@@ -207,11 +206,11 @@ gameOverScene1.update = function(){
 
   let timer2;
   let timer2Text;
-  let time2InSeconds = 20;
+  let time2InSeconds = 30;
   let wallet2_text;
 
   Maze2Scene.preload = function(){
-    this.load.image('background', 'assets/Christmas.png');
+   // this.load.image('background', 'assets/Christmas.png');
   this.load.image('player','assets/walking.png');
   this.load.image('bush','assets/bush.png');  
   this.load.spritesheet('coin', 'assets/tile001.png', {
@@ -222,17 +221,17 @@ gameOverScene1.update = function(){
 
   Maze2Scene.create = function() {
 
-    this.add.image(0, 0, 'background').setOrigin(0, 0);
+    //this.add.image(0, 0, 'background').setOrigin(0, 0);
     this.player = this.add.sprite(135,135,'player');
     this.player.setDisplaySize(20,30)
 
-    wallet2_text = this.add.text(190, 20, coincount2, { fontFamily: 'Arial', fontSize: '20px', fill: 'red' });
-    score_coin = this.physics.add.sprite(160, 20, 'coin');
+    wallet2_text = this.add.text(130, 50, coincount2, { fontFamily: 'Arial', fontSize: '20px', fill: 'white' });
+    score_coin = this.physics.add.sprite(100, 60, 'coin');
     score_coin.play('round');
 
-    timer2Text = this.add.text(800, 20, 'Time: 10s', {
+    timer2Text = this.add.text(850, 50, 'Time: 10s', {
       fontSize: '24px',
-      color: '#000000'
+      color: 'white'
     });
 
     timer2 = this.time.addEvent({
@@ -259,14 +258,27 @@ gameOverScene1.update = function(){
     }
 
     coin =[
-      this.physics.add.sprite(360,260,'coin'),
-      this.physics.add.sprite(240,420,'coin'),
-      this.physics.add.sprite(400,420,'coin'),
-      this.physics.add.sprite(600,540,'coin'),
-      this.physics.add.sprite(800,180,'coin'),
-      this.physics.add.sprite(840,380,'coin'),
-      this.physics.add.sprite(680,420,'coin'),
-      this.physics.add.sprite(560,260,'coin'),
+      this.physics.add.sprite(418,278,'coin'),
+      this.physics.add.sprite(768,275,'coin'),
+      this.physics.add.sprite(905,315,'coin'),
+      this.physics.add.sprite(945,135,'coin'),
+      this.physics.add.sprite(940,595,'coin'),
+      this.physics.add.sprite(940,520,'coin'),
+      this.physics.add.sprite(800,555,'coin'),
+      this.physics.add.sprite(870,555,'coin'),
+      this.physics.add.sprite(730,485,'coin'),
+      this.physics.add.sprite(770,485,'coin'),
+      this.physics.add.sprite(135,595,'coin'),
+      this.physics.add.sprite(350,595,'coin'),
+      this.physics.add.sprite(200,525,'coin'),
+      this.physics.add.sprite(380,525,'coin'),
+      this.physics.add.sprite(420,525,'coin'),
+      this.physics.add.sprite(200,420,'coin'),
+      this.physics.add.sprite(205,315,'coin'),
+      this.physics.add.sprite(555,278,'coin'),
+      this.physics.add.sprite(625,315,'coin'),
+      this.physics.add.sprite(418,205,'coin'),
+      this.physics.add.sprite(800,205,'coin'),
     ] 
   
     this.anims.create({
