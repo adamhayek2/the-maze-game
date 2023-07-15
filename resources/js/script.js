@@ -3,6 +3,7 @@ let gateLeft = document.getElementById('santa');
 let gateRight = document.getElementById('gate-right');
 let heroParallax = document.getElementById("hero-parallax");
 
+
 window.addEventListener('scroll', () =>{
     let value = window.scrollY;
     var fontSize =  3.1 - value / 10;
@@ -108,3 +109,26 @@ window.addEventListener("load", function () {
   
     masthead.appendChild(canvas);
   });
+
+
+let items = document.querySelectorAll('.content');
+items.forEach (item => {
+  item.addEventListener('mouseover', (e) => {
+    // get ponter pointer height
+    let positionPx = e.x - item.getBoundingClientRect().left;
+    //convert to %
+    let positionX = (positionPx / item.offsetWidth)*100;
+    // get ponter pointer width
+    let positionPy= e.y=item.getBoundingClientRect().top;
+    // convert to &%
+    let positionY = (positionPy / item.offsetHeight)*100;
+    item.style.setProperty('--rX', (0.5)*(50 - positionY) + 'deg');
+    item.style.setProperty('--rY', -(0.5)*(50 - positionX) + 'deg');
+  })
+  item.addEventListener('mouseout', ()=>{
+    item.style.setProperty('--rX', '0deg')
+    item.style.setProperty('--rY', '0deg')
+
+  })
+
+})
