@@ -76,7 +76,7 @@ header {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* background-image: url('/resources/images/background.png');  */
+    background-image: url('/resources/images/hero-section/background.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -104,15 +104,19 @@ header {
     pointer-events: none;
 }
 
-.parallax img#gate-left {
+.parallax img#santa {
     margin-bottom: 200px;
-    transform: translateY(250px);
-    width: 300px;
+    transform: translateY(300px);
+    width: 200px;
+    z-index: 2;
+
 }
 
-.parallax img#gate-right {
+.parallax img#home {
     position: fixed;
-    transform: translateX(305px);
+    transform:scaleX(-1) translateX(-1200px) translateY(200px) ;
+    width: 300px;
+    z-index: 2;
 }
 
 
