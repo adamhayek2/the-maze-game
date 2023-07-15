@@ -70,16 +70,24 @@ header {
     opacity: 1;
 }
 
-.parallax {
+.hearo {
+    height: 100%;
+    color: #000000;
+    display: block;
+    background-image:  url('/resources/images/hero-section/background.png') ;
     position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.parallax {
+    
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('/resources/images/hero-section/background.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-image: url('/resources/images/hero-section/background-2.png');
 }
 
 #text {
@@ -98,7 +106,6 @@ header {
 
 .parallax img {
     position: absolute;
-    /* top: 0; */
     left: 0;
     width: 100%;
     pointer-events: none;
@@ -107,16 +114,14 @@ header {
 .parallax img#santa {
     margin-bottom: 200px;
     transform: translateY(300px);
-    width: 150px;
-    z-index: 3;
+    width: 200px;
+    z-index: 2;
 
 }
 
 .parallax img#home {
     position: fixed;
-    margin-bottom: 150px;
-    transform:scaleX(-1) translateX(-1000px) translateY(200px) ;
-    /* transform:scaleX(-1) translateX(-1200px) translateY(200px) ; */
+    transform:scaleX(-1) translateX(-1200px) translateY(200px) ;
     width: 300px;
     z-index: 2;
     
@@ -147,8 +152,3 @@ header {
    float: left
 }
 
-.hearo {
-    height: 100%;
-    color: #000000;
-    display: block;
-}
