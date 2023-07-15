@@ -3,6 +3,7 @@ let treeLeft = document.getElementById('tree-left');
 let treeRight = document.getElementById('tree-right');
 let gateLeft = document.getElementById('santa');
 let gateRight = document.getElementById('gate-right');
+let heroParallax = document.getElementById("hero-parallax");
 
 window.addEventListener('scroll', () =>{
     let value = window.scrollY;
@@ -15,7 +16,7 @@ window.addEventListener('scroll', () =>{
     treeLeft.style.left = value * -1.5 + 'px';
     treeRight.style.left = value * 1.5 + 'px';
     gateLeft.style.left = value * 1.8+ 'px';
-    // gateRight.style.left = value * -0.5 + 'px';
+    heroParallax.style.backgroundPositionY = value * +0.5 + 'px';
 })
 
 // Snow from https://codepen.io/radum/pen/xICAB
