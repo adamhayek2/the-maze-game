@@ -5,7 +5,7 @@ let Maze1Scene = new Phaser.Scene('Game');
 
 let timer;
 let timerText;
-let timeInSeconds = 10;
+let timeInSeconds = 15;
 let wallet_text;
 
 Maze1Scene.preload = function(){
@@ -24,11 +24,11 @@ Maze1Scene.create = function(){
   this.player.setDisplaySize(20,30)
   
 
-  wallet_text = this.add.text(190, 90, coincount, { fontFamily: 'Arial', fontSize: '20px', fill: 'white' });
+  wallet_text = this.add.text(190, 90, coincount + "/5", { fontFamily: 'Arial', fontSize: '20px', fill: 'white' });
   score_coin = this.physics.add.sprite(160, 100, 'coin');
   score_coin.play('round');
 
-  timerText = this.add.text(800, 90, 'Time: 10s', {
+  timerText = this.add.text(800, 90, 'Time: 15s', {
     fontSize: '24px',
     color: '#ffffff'
   });
@@ -53,7 +53,7 @@ Maze1Scene.create = function(){
   function collectCoin(player,coin){
     coin.disableBody(true, true);
     coincount+=1;
-    wallet_text.setText(coincount);
+    wallet_text.setText(coincount+"/5");
   }
   
   coin =[
@@ -143,10 +143,15 @@ Maze1Scene.update = function(){
       this.player.x += speed;
     }
 
-    if (this.player.x > 900) {
-        // Game win 
+    if (this.player.x > 1000) {
+      // Game win 
+      if(coincount>4){
         this.scene.start('Win');
       }
+      else{
+        this.scene.start('GameOver')
+      }
+    } 
     
   };
 
@@ -156,7 +161,7 @@ Maze1Scene.update = function(){
   Maze1WinScene.create = function() {
     this.add.text(540, 360, 'You Win!', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
   
-    let coinText = this.add.text(540, 400, 'Coins Collected: ' + coincount, {
+    let coinText = this.add.text(540, 400, 'Coins Collected: ' + coincount+"/5", {
       fontSize: '32px',
       color: '#ffffff'
     });
@@ -196,7 +201,7 @@ gameOverScene1.update = function(){
   let pressEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
 
   if(pressEnter.isDown){
-    timeInSeconds = 10;
+    timeInSeconds = 15;
     coincount = 0
     this.scene.start('Game');
   }
@@ -226,11 +231,11 @@ gameOverScene1.update = function(){
     this.player = this.add.sprite(135,135,'player');
     this.player.setDisplaySize(20,30)
 
-    wallet2_text = this.add.text(130, 50, coincount2, { fontFamily: 'Arial', fontSize: '20px', fill: 'white' });
+    wallet2_text = this.add.text(130, 50, coincount2+"/10", { fontFamily: 'Arial', fontSize: '20px', fill: 'white' });
     score_coin = this.physics.add.sprite(100, 60, 'coin');
     score_coin.play('round');
 
-    timer2Text = this.add.text(850, 50, 'Time: 10s', {
+    timer2Text = this.add.text(850, 50, 'Time: 30s', {
       fontSize: '24px',
       color: 'white'
     });
@@ -247,7 +252,7 @@ gameOverScene1.update = function(){
       timer2Text.setText('Time: ' + time2InSeconds + 's');
     
       if (time2InSeconds <= 0) {
-        time2InSeconds = 20;
+        time2InSeconds = 30;
         coincount2=0;
         this.scene.start('GameOver');
       }
@@ -255,7 +260,7 @@ gameOverScene1.update = function(){
     function collectCoin2(player,coin){
       coin.disableBody(true, true);
       coincount2+=1;
-      wallet2_text.setText(coincount2);
+      wallet2_text.setText(coincount2+"/10");
     }
 
     coin =[
@@ -367,8 +372,13 @@ gameOverScene1.update = function(){
 
     if (this.player.x > 1000) {
         // Game win 
-        this.scene.start('Win2');
-      }
+        if(coincount2>9){
+          this.scene.start('Win2');
+        }
+        else{
+          this.scene.start('GameOver')
+        }
+      } 
     
   };
   // Maze 2 won
@@ -377,7 +387,7 @@ gameOverScene1.update = function(){
   Maze2WinScene.create = function() {
     this.add.text(540, 360, 'You Win!', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
   
-    let coinText2 = this.add.text(540, 400, 'Coins Collected: ' + coincount2, {
+    let coinText2 = this.add.text(540, 400, 'Coins Collected: ' + coincount2+"/10", {
       fontSize: '32px',
       color: '#ffffff'
     });
@@ -395,7 +405,13 @@ gameOverScene1.update = function(){
     let pressEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
 
     if(pressEnter.isDown){
+      coincount = 0;
+      coincount2 = 0;
+      timeInSeconds = 15;
+      time2InSeconds = 30;
       this.scene.start('Game');
+
+
     }
   }
 
