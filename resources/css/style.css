@@ -132,27 +132,60 @@ header {
 }
 
 
+
+
+/* ---------- Section - 2 ---------------- */
 .sec {
     position: relative;
-    background-color: #020912;
+    /* background-image: url(/resources/images/about-sec/parket_2.jpg); */
+    filter: brightness(70%);
+    background-size: 100px;
+    /* background-repeat: repeat-y; */
+    background-color: #441316;
     padding: 30px 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10%;
+
 }
-.sec h2 {
-    font-size: 3em;
+.text {
+    font-size: 1.2em;
     color: #fff;
+    font-weight:100;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    box-shadow: 0 70px 63px -60px #494848;
+    transform-style: preserve-3d;
+    transition: transform 0.05s linear;
+}
+.sec .text h2 {
+    font-size: 2em;
     margin-bottom: 10px;
 }
 
-.sec p {
-    font-size: 2em;
-    color: #fff;
-    font-weight: 300;
-    text-align: justify;
-} 
-  
-.color {
-   width: 20%;
-   height: 100%;
-   float: left
+.wrap {
+
+    box-shadow: 0 30px 20px #5555;
+    transform-style: preserve-3d;
+    transform: perspective(100rem);
+    cursor: pointer;
 }
 
+.content {
+    --rX: 0deg;
+    --rY: 0deg;
+    transform: rotateX(var(--rX)) rotateY(var(--rY));
+    transition: 0.2s;
+    box-shadow: 0 30px 20px #5555;
+    background-color: #fff;
+    border-radius: 50px;
+
+}
+.content img {
+    object-fit: cover;
+    border-radius: 50px;
+}
