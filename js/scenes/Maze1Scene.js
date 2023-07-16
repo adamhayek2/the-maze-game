@@ -28,7 +28,7 @@ class Maze1Scene extends Phaser.Scene{
     create(){
         this.add.image(0,0,'background').setOrigin(0,0);
         this.player = this.physics.add.sprite(200,180,'player');
-        this.player.setDisplaySize(30,35)
+        this.player.setDisplaySize(25,30)
         this.add.text(180,40,"OBJECTIVES",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black',underline:true })
         this.wallet_text = this.add.text(190, 90, this.coincount + "/5", { fontFamily: 'Arial', fontSize: '20px', fill: 'black' });
         this.kill_text = this.add.text(300,90,this.monsterCount +"/4",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black' })
