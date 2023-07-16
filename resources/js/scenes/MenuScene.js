@@ -8,9 +8,9 @@
     }
 
     preload(){
-        this.load.image("level1","resources/assets/teaser1.JPG");
-        this.load.image("level2","resources/assets/teaser2.JPG");
-        this.load.image("level3","resources/assets/teaser3.JPG")
+        this.load.image("level1","https://github.com/adamhayek2002/the-maze-game/blob/main/resources/assets/teaser1.JPG");
+        this.load.image("level2","https://github.com/adamhayek2002/the-maze-game/blob/main/resources/assets/teaser2.JPG");
+        this.load.image("level3","https://github.com/adamhayek2002/the-maze-game/blob/main/resources/assets/teaser3.JPG")
     }
     create(){
 
