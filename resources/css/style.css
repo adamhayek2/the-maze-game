@@ -13,7 +13,7 @@ html {
 body {
     min-height: 100vh;
     overflow-x: hidden;
-    background: black;
+    background: #5f64a5;
 }  
 
 header {
@@ -218,7 +218,7 @@ header {
     width: 100%;
     height: 100vh;
     background: rgb(255,141,0);
-    background: radial-gradient(circle, rgba(255,141,0,1) 20%, rgba(255,185,0,1) 100%);
+    background: radial-gradient(circle, #fee68c 20%, rgba(255,185,0,1) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -256,7 +256,7 @@ header {
     position: relative;
     margin-top: 130vh;
     
-    background-color: #020912;
+    background-color: #2e205e;
     color: #fff;
 }
 .container h1 {
@@ -268,12 +268,15 @@ header {
     position: absolute;
     z-index: 2;
     transform: translateX(750px) translateY(-300px);
+    z-index: -1;
 }
 #grass{
     transform: translateY(-200px);
     position: absolute;
 }
-
+.third-section-text{
+    padding: 100px;
+}
 
 
 /* ------------------------------------------------------------ */

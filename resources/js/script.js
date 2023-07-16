@@ -23,7 +23,7 @@ window.addEventListener('scroll', () =>{
     descText.style.transform = value >=1000 ? `translateY(${value / (secondSectionHeight ) * 600 - 600}px)` : 0;
     descImg.style.transform = value >=1000 ? `translateY(${value / (secondSectionHeight ) * -300 + 300}px)` : 0;
     cta.style.clipPath = value >= thirdSectionHeight ? "circle("+ (value-2000) * 0.6 +"px at center center)" : "circle(0px at center center)";
-    bats.style.transform = value >= thirdSectionHeight ? `translateX(750px) translateY(${value / (thirdSectionHeight) * -100 + +100}px)` : 0;
+    bats.style.transform = value >= thirdSectionHeight ? `translateX(750px) translateY(${value / (thirdSectionHeight) * -150 + 100}px)` : 0;
     // text.style.left = 100 - value/5 + '%';
     // innerText.style.left = 100 - value/5 + '%';
     
