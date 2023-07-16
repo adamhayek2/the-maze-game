@@ -11,7 +11,7 @@ class Maze3Scene extends Phaser.Scene{
         this.monsterCount = 0;
         this.timer;
         this.timerText;
-        this.timeInSeconds = 145;
+        this.timeInSeconds = 45;
         this.wallet_text;
         this.kill_text;
         this.load.image('background3','resources/assets/halloween.png');
