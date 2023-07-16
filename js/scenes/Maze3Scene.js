@@ -16,7 +16,7 @@ class Maze3Scene extends Phaser.Scene{
         this.kill_text;
         this.load.image('background3', 'assets/halloween.png');
         this.load.image('monster3','assets/ghost.png')
-        this.load.image('player3','assets/kid.png');
+        this.load.spritesheet('skeleton','assets/skeleton.png',{frameWidth: 25, frameHeight: 25});
         this.load.image('bush3','assets/lava2.jpg');  
         this.load.spritesheet('coin', 'assets/tile001.png', {
             frameWidth: 50,
@@ -38,18 +38,56 @@ class Maze3Scene extends Phaser.Scene{
           this.scene.start(CST.SCENES.MAZE3)
         },this);
 
+        this.anims.create({
+          key: 'right',
+          frames: this.anims.generateFrameNumbers('skeleton', {
+            start: 1,
+            end: 9
+          }),
+          frameRate: 15,
+          repeat: -1
+        });
+        this.anims.create({
+          key: 'up',
+          frames: this.anims.generateFrameNumbers('skeleton', {
+            start: 10,
+            end: 17
+          }),
+          frameRate: 15,
+          repeat: -1
+        });
+        this.anims.create({
+          key: 'left',
+          frames: this.anims.generateFrameNumbers('skeleton', {
+            start: 18,
+            end: 26
+          }),
+          frameRate: 15,
+          repeat: -1
+        });
+        this.anims.create({
+          key: 'down',
+          frames: this.anims.generateFrameNumbers('skeleton', {
+            start: 27,
+            end: 35
+          }),
+          frameRate: 15,
+          repeat: -1
+        });
 
-
+  
+        
         this.add.image(0,0,'background3').setOrigin(0,0);
-        this.player = this.add.sprite(90,120,'player3');
-        this.player.setDisplaySize(15,20)
+        this.player = this.add.sprite(90,120,'skeleton',0);
+        this.player.setDisplaySize(29,29)
+        this.add.sprite(340,50,'skeleton',0).setDisplaySize(50,50);
         this.add.text(100,15,"OBJECTIVES",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white',underline:true })
         this.add.text(400,40,"PRESS SPACE TO KILL GHOSTS",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
         this.wallet_text = this.add.text(80, 50, this.coincount+"/15", { fontFamily: 'Arial', fontSize: '20px', fill: 'white'});
         this.score_coin = this.physics.add.sprite(60, 60, 'coin');
         this.score_coin.play('round');
         this.kill_text = this.add.text(230,50,this.monsterCount +"/15",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
-        this.monster = this.physics.add.sprite(200,60,'monster3').setDisplaySize(30,30);
+        this.monster = this.physics.add.sprite(200,60,'monster3').setDisplaySize(25,25);
         this.add.text(900,10,"ESC: Pause/Play",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
         this.add.text(780,10,"R: Restart",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
         this.timerText = this.add.text(900, 50, 'Time: 45s', {
@@ -106,24 +144,24 @@ class Maze3Scene extends Phaser.Scene{
         ];
 
         this.monster = [
-          this.physics.add.sprite(210,120,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(210,180,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(150,300,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(210,420,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(360,300,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(570,240,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(690,180,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(810,210,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(990,240,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(840,420,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(900,420,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(990,600,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(870,630,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(510,630,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(450,450,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(600,450,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(210,570,'monster3').setDisplaySize(25,30),
-          this.physics.add.sprite(300,450,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(210,120,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(210,180,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(150,300,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(210,420,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(360,300,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(570,240,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(690,180,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(810,210,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(990,240,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(840,420,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(900,420,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(990,600,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(870,630,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(510,630,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(450,450,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(600,450,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(210,570,'monster3').setDisplaySize(18,20),
+          this.physics.add.sprite(300,450,'monster3').setDisplaySize(18,20),
         
         ]
 
@@ -228,14 +266,18 @@ class Maze3Scene extends Phaser.Scene{
 
         if (this.cursors.up.isDown && !this.checkCollision(this.player.x, this.player.y - this.speed)) {
             this.player.y -= this.speed;
+            this.player.play('up', true);
         } else if (this.cursors.down.isDown && !this.checkCollision(this.player.x, this.player.y + this.speed)) {
             this.player.y += this.speed;
+            this.player.play('down', true);
         }
         if (this.cursors.left.isDown && !this.checkCollision(this.player.x - this.speed, this.player.y)) {
             this.player.x -= this.speed;
+            this.player.play('left', true);
         } else if (this.cursors.right.isDown && !this.checkCollision(this.player.x + this.speed, this.player.y)) {
             this.player.x += this.speed;
-        }
+            this.player.play('right', true);
+        }else{this.player.anims.stop()}
     
         if (this.player.x > 1000) {
             if(this.coincount>14 && this.monsterCount>14){
