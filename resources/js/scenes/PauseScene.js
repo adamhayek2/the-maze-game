@@ -4,9 +4,4 @@ class PauseScene extends Phaser.Scene{
             key:CST.SCENES.PAUSE
         })
     }
-
-
-
-
-
 }

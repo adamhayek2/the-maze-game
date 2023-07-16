@@ -12,7 +12,7 @@ class Maze1WinScene extends Phaser.Scene{
     }
 
     preload(){
-        this.load.image('win', 'assets/win.png');
+        this.load.image('win', 'resources/assets/win.png');
     }
 
 

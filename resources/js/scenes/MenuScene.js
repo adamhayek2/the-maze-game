@@ -8,9 +8,9 @@
     }
 
     preload(){
-        this.load.image("level1","assets/teaser1.jpg");
-        this.load.image("level2","assets/teaser2.jpg");
-        this.load.image("level3","assets/teaser3.jpg")
+        this.load.image("level1","resources/assets/teaser1.jpg");
+        this.load.image("level2","resources/assets/teaser2.jpg");
+        this.load.image("level3","resources/assets/teaser3.jpg")
     }
     create(){
 

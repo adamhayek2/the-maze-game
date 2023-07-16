@@ -14,11 +14,11 @@ class Maze3Scene extends Phaser.Scene{
         this.timeInSeconds = 45;
         this.wallet_text;
         this.kill_text;
-        this.load.image('background3', 'assets/halloween.png');
-        this.load.image('monster3','assets/ghost.png')
-        this.load.spritesheet('skeleton','assets/skeleton.png',{frameWidth: 25, frameHeight: 25});
-        this.load.image('bush3','assets/lava2.jpg');  
-        this.load.spritesheet('coin', 'assets/tile001.png', {
+        this.load.image('background3','resources/assets/halloween.png');
+        this.load.image('monster3','resources/assets/ghost.png')
+        this.load.spritesheet('skeleton','resources/assets/skeleton.png',{frameWidth: 25, frameHeight: 25});
+        this.load.image('bush3','resources/assets/lava2.jpg');  
+        this.load.spritesheet('coin', 'resources/assets/tile001.png', {
             frameWidth: 50,
             frameHeight: 50
         });
@@ -39,7 +39,7 @@ class Maze3Scene extends Phaser.Scene{
         },this);
 
         this.anims.create({
-          key: 'right',
+          key: 'right2',
           frames: this.anims.generateFrameNumbers('skeleton', {
             start: 1,
             end: 9
@@ -48,7 +48,7 @@ class Maze3Scene extends Phaser.Scene{
           repeat: -1
         });
         this.anims.create({
-          key: 'up',
+          key: 'up2',
           frames: this.anims.generateFrameNumbers('skeleton', {
             start: 10,
             end: 17
@@ -57,7 +57,7 @@ class Maze3Scene extends Phaser.Scene{
           repeat: -1
         });
         this.anims.create({
-          key: 'left',
+          key: 'left2',
           frames: this.anims.generateFrameNumbers('skeleton', {
             start: 18,
             end: 26
@@ -66,7 +66,7 @@ class Maze3Scene extends Phaser.Scene{
           repeat: -1
         });
         this.anims.create({
-          key: 'down',
+          key: 'down2',
           frames: this.anims.generateFrameNumbers('skeleton', {
             start: 27,
             end: 35
@@ -266,17 +266,17 @@ class Maze3Scene extends Phaser.Scene{
 
         if (this.cursors.up.isDown && !this.checkCollision(this.player.x, this.player.y - this.speed)) {
             this.player.y -= this.speed;
-            this.player.play('up', true);
+            this.player.play('up2', true);
         } else if (this.cursors.down.isDown && !this.checkCollision(this.player.x, this.player.y + this.speed)) {
             this.player.y += this.speed;
-            this.player.play('down', true);
+            this.player.play('down2', true);
         }
         if (this.cursors.left.isDown && !this.checkCollision(this.player.x - this.speed, this.player.y)) {
             this.player.x -= this.speed;
-            this.player.play('left', true);
+            this.player.play('left2', true);
         } else if (this.cursors.right.isDown && !this.checkCollision(this.player.x + this.speed, this.player.y)) {
             this.player.x += this.speed;
-            this.player.play('right', true);
+            this.player.play('right2', true);
         }else{this.player.anims.stop()}
     
         if (this.player.x > 1000) {

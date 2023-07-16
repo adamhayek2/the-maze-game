@@ -14,11 +14,11 @@ class Maze2Scene extends Phaser.Scene{
         this.timeInSeconds = 30;
         this.wallet_text;
         this.kill_text;
-        this.load.image('background2', 'assets/snow.jpg');
-        this.load.image('monster2','assets/gift.png')
-        this.load.spritesheet('walking','assets/walking.png',{frameWidth: 20, frameHeight: 25});
-        this.load.image('bush2','assets/bush.png');  
-        this.load.spritesheet('coin', 'assets/tile001.png', {
+        this.load.image('background2', 'resources/assets/snow.jpg');
+        this.load.image('monster2','resources/assets/gift.png')
+        this.load.spritesheet('santa','resources/assets/santa.png',{frameWidth: 26, frameHeight: 34});
+        this.load.image('bush2','resources/assets/bush.png');  
+        this.load.spritesheet('coin', 'resources/assets/tile001.png', {
             frameWidth: 50,
             frameHeight: 50
         });
@@ -40,19 +40,47 @@ class Maze2Scene extends Phaser.Scene{
         },this);
 
         this.anims.create({
-          key: 'walk',
-          frames: this.anims.generateFrameNumbers('walking', {
-            start: 1,
-            end: 12
+          key: 'down1',
+          frames: this.anims.generateFrameNumbers('santa', {
+            start: 0,
+            end: 2
           }),
-          frameRate: 20,
+          frameRate: 15,
+          repeat: -1
+        });
+        this.anims.create({
+          key: 'left1',
+          frames: this.anims.generateFrameNumbers('santa', {
+            start: 3,
+            end: 5
+          }),
+          frameRate: 15,
+          repeat: -1
+        });
+        this.anims.create({
+          key: 'right1',
+          frames: this.anims.generateFrameNumbers('santa', {
+            start: 6,
+            end: 8
+          }),
+          frameRate: 15,
+          repeat: -1
+        });
+        this.anims.create({
+          key: 'up1',
+          frames: this.anims.generateFrameNumbers('santa', {
+            start: 9,
+            end: 11
+          }),
+          frameRate: 15,
           repeat: -1
         });
 
 
         this.add.image(0,0,'background2').setOrigin(0,0);
-        this.player = this.add.sprite(135,135,'walking',0);
-        this.player.setDisplaySize(20,25)
+        
+        this.player = this.add.sprite(135,135,'santa',1);
+        this.player.setDisplaySize(22,30)
         this.add.text(150,15,"OBJECTIVES",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white',underline:true })
         this.add.text(400,50,"PRESS SPACE TO COLLECT GIFTS",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
         this.add.text(900,10,"ESC: Pause/Play",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
@@ -220,17 +248,17 @@ class Maze2Scene extends Phaser.Scene{
 
         if (this.cursors.up.isDown && !this.checkCollision(this.player.x, this.player.y - this.speed)) {
             this.player.y -= this.speed;
-            this.player.play('walk', true);
+            this.player.play('up1', true);
         } else if (this.cursors.down.isDown && !this.checkCollision(this.player.x, this.player.y + this.speed)) {
             this.player.y += this.speed;
-            this.player.play('walk', true);
+            this.player.play('down1', true);
         }
         if (this.cursors.left.isDown && !this.checkCollision(this.player.x - this.speed, this.player.y)) {
             this.player.x -= this.speed;
-            this.player.play('walk', true);
+            this.player.play('left1', true);
         } else if (this.cursors.right.isDown && !this.checkCollision(this.player.x + this.speed, this.player.y)) {
             this.player.x += this.speed;
-            this.player.play('walk', true);
+            this.player.play('right1', true);
         } else{
           this.player.anims.stop()
         }
