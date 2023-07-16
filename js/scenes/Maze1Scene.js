@@ -3,7 +3,9 @@ class Maze1Scene extends Phaser.Scene{
     constructor(){
         super({
             key:CST.SCENES.MAZE1
+            
         })
+        this.isPaused = false;
     }
     
     preload(){
@@ -26,6 +28,21 @@ class Maze1Scene extends Phaser.Scene{
     }
 
     create(){
+
+
+      this.input.keyboard.on('keydown-ESC', function(){
+        if (this.isPaused) {
+          this.isPaused = false;
+        } else {
+          this.isPaused = true;
+        }
+      },this);
+
+      this.input.keyboard.on('keydown-R', function(){
+        this.scene.start(CST.SCENES.MAZE1)
+      },this);
+
+
         this.add.image(0,0,'background').setOrigin(0,0);
         this.player = this.physics.add.sprite(200,180,'player');
         this.player.setDisplaySize(25,30)
@@ -33,9 +50,12 @@ class Maze1Scene extends Phaser.Scene{
         this.wallet_text = this.add.text(190, 90, this.coincount + "/5", { fontFamily: 'Arial', fontSize: '20px', fill: 'black' });
         this.kill_text = this.add.text(300,90,this.monsterCount +"/4",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black' })
         this.add.text(400,90,"PRESS SPACE TO KILL CRABS",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black' })
+        this.add.text(900,10,"ESC: Pause/Play",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black' })
+        this.add.text(780,10,"R: Restart",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black' })
         this.monster = this.physics.add.sprite(270,100,'monster').setDisplaySize(30,30);
         this.score_coin = this.physics.add.sprite(160, 100, 'coin');
         this.score_coin.play('round');
+        this.add.text
 
         this.timerText = this.add.text(800, 90, 'Time: 15s', {
             fontSize: '25px',
@@ -51,12 +71,13 @@ class Maze1Scene extends Phaser.Scene{
         });
 
         function updateTimer(){
+          if(!this.isPaused){
             this.timeInSeconds--;
             this.timerText.setText('Time: ' + this.timeInSeconds + 's');
           
             if (this.timeInSeconds <= 0) {
                this.scene.start(CST.SCENES.LOSE1);
-            }
+            }}
           }
           function collectCoin(player,coin){
             coin.disableBody(true, true);
@@ -147,6 +168,9 @@ class Maze1Scene extends Phaser.Scene{
 
     update(){
 
+      if (this.isPaused) {
+        return;
+      }
         this.speed = 3;
 
         this.monster.forEach(monster => {

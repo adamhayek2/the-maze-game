@@ -10,5 +10,6 @@
         MAZE3: "MAZE3",
         WIN3: "WIN3",
         LOSE3: "LOSE3",
+        PAUSE: "PAUSE"
     }
 }

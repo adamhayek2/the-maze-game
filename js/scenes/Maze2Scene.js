@@ -3,6 +3,7 @@ class Maze2Scene extends Phaser.Scene{
         super({
             key:CST.SCENES.MAZE2
         })
+        this.isPaused = false;
     }
 
     preload(){
@@ -24,11 +25,28 @@ class Maze2Scene extends Phaser.Scene{
     }
 
     create(){
+
+
+        this.input.keyboard.on('keydown-ESC', function(){
+          if (this.isPaused) {
+            this.isPaused = false;
+          } else {
+            this.isPaused = true;
+          }
+        },this);
+
+        this.input.keyboard.on('keydown-R', function(){
+          this.scene.start(CST.SCENES.MAZE2)
+        },this);
+
+
         this.add.image(0,0,'background2').setOrigin(0,0);
         this.player = this.add.sprite(135,135,'player2');
         this.player.setDisplaySize(20,25)
         this.add.text(150,15,"OBJECTIVES",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white',underline:true })
         this.add.text(400,50,"PRESS SPACE TO COLLECT GIFTS",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
+        this.add.text(900,10,"ESC: Pause/Play",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
+        this.add.text(780,10,"R: Restart",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
         this.wallet_text = this.add.text(130, 50, this.coincount+"/10", { fontFamily: 'Arial', fontSize: '20px', fill: 'white' });
         this.score_coin = this.physics.add.sprite(100, 60, 'coin');
         this.score_coin.play('round');
@@ -47,14 +65,15 @@ class Maze2Scene extends Phaser.Scene{
             loop: true
           });
         
-        function updateTimer(){
-            this.timeInSeconds--;
-            this.timerText.setText('Time: ' + this.timeInSeconds + 's');
-          
-            if (this.timeInSeconds <= 0) {
-               this.scene.start(CST.SCENES.LOSE2);
+          function updateTimer(){
+            if(!this.isPaused){
+              this.timeInSeconds--;
+              this.timerText.setText('Time: ' + this.timeInSeconds + 's');
+            
+              if (this.timeInSeconds <= 0) {
+                 this.scene.start(CST.SCENES.LOSE2);
+              }}
             }
-          }
 
         function collectCoin(player,coin){
             coin.disableBody(true, true);
@@ -167,6 +186,10 @@ class Maze2Scene extends Phaser.Scene{
         }
 
     update(){
+
+      if (this.isPaused) {
+        return;
+      }
 
         this.speed = 3;
 
