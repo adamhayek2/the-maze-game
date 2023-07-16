@@ -16,14 +16,18 @@ let thirdSectionHeight = thirdSection.offsetHeight;
 
 
 
-window.addEventListener('scroll', () =>{
-    let value = window.scrollY;
-    gateLeft.style.left = value * 1.8+ 'px';
-    heroParallax.style.backgroundPositionY = value * +.4 + 'px';
-    descText.style.Top = value * 1.5+ 'px';
-    descImg.style.top = value * 1.5+ 'px';
-  
-    
+window.addEventListener('scroll', () => {
+  let value = window.scrollY;
+  santa.style.left = value <= 1000 ? value * 1.8 + 'px' : 0;
+  heroParallax.style.backgroundPositionY = value * +0.4 + 'px';
+  descText.style.transform = value >= 1000 ? `translateY(${value / (secondSectionHeight) * 600 - 600}px)` : 0;
+  descImg.style.transform = value >= 1000 ? `translateY(${value / (secondSectionHeight) * -300 + 300}px)` : 0;
+  cta.style.clipPath = value >= thirdSectionHeight ? "circle(" + (value - 2000) * 0.6 + "px at center center)" : "circle(0px at center center)";
+  bats.style.transform = value >= thirdSectionHeight ? `translateX(50%) translateY(${value / (thirdSectionHeight) * -150 + 100}px)` : 0;
+  // text.style.left = 100 - value/5 + '%';
+  // innerText.style.left = 100 - value/5 + '%';
+
+
 })
 
 // Snow from https://codepen.io/radum/pen/xICAB
