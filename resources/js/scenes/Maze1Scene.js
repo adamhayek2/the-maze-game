@@ -18,7 +18,7 @@ class Maze1Scene extends Phaser.Scene{
         this.kill_text;
 
         this.load.image('background', 'assets/beach.jpg');
-        this.load.image('player','assets/fisherman.png');
+        this.load.spritesheet('boy','assets/boy.png',{frameWidth: 35, frameHeight: 35});
         this.load.image('bush','assets/parket_2.jpg'); 
         this.load.image('monster','assets/crab.png') 
         this.load.spritesheet('coin', 'assets/tile001.png', {
@@ -43,9 +43,47 @@ class Maze1Scene extends Phaser.Scene{
       },this);
 
 
+      this.anims.create({
+        key: 'down',
+        frames: this.anims.generateFrameNumbers('boy', {
+          start: 1,
+          end: 4
+        }),
+        frameRate: 15,
+        repeat: -1
+      });
+      this.anims.create({
+        key: 'left',
+        frames: this.anims.generateFrameNumbers('boy', {
+          start: 5,
+          end: 9
+        }),
+        frameRate: 15,
+        repeat: -1
+      });
+      this.anims.create({
+        key: 'right',
+        frames: this.anims.generateFrameNumbers('boy', {
+          start: 10,
+          end: 14
+        }),
+        frameRate: 15,
+        repeat: -1
+      });
+      this.anims.create({
+        key: 'up',
+        frames: this.anims.generateFrameNumbers('boy', {
+          start: 15,
+          end: 19
+        }),
+        frameRate: 15,
+        repeat: -1
+      });
+
+
         this.add.image(0,0,'background').setOrigin(0,0);
-        this.player = this.physics.add.sprite(200,180,'player');
-        this.player.setDisplaySize(25,30)
+        this.player = this.add.sprite(200,180,'boy',0);
+        this.player.setDisplaySize(32,32)
         this.add.text(180,40,"OBJECTIVES",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black',underline:true })
         this.wallet_text = this.add.text(190, 90, this.coincount + "/5", { fontFamily: 'Arial', fontSize: '20px', fill: 'black' });
         this.kill_text = this.add.text(300,90,this.monsterCount +"/4",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black' })
@@ -191,13 +229,19 @@ class Maze1Scene extends Phaser.Scene{
         // checking if the player is pressing an arrow and also not colliding with barriers.
         if (this.cursors.up.isDown && !this.checkCollision(this.player.x, this.player.y - this.speed)) {
             this.player.y -= this.speed;
+            this.player.play('up', true);
         } else if (this.cursors.down.isDown && !this.checkCollision(this.player.x, this.player.y + this.speed)) {
             this.player.y += this.speed;
+            this.player.play('down', true);
         }
         if (this.cursors.left.isDown && !this.checkCollision(this.player.x - this.speed, this.player.y)) {
             this.player.x -= this.speed;
+            this.player.play('left', true);
         } else if (this.cursors.right.isDown && !this.checkCollision(this.player.x + this.speed, this.player.y)) {
             this.player.x += this.speed;
+            this.player.play('right', true);
+        }else{
+          this.player.anims.stop()
         }
     
         if (this.player.x > 920) {
