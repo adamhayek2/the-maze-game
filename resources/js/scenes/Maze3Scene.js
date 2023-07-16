@@ -80,7 +80,7 @@ class Maze3Scene extends Phaser.Scene{
         this.add.image(0,0,'background3').setOrigin(0,0);
         this.player = this.add.sprite(90,120,'skeleton',0);
         this.player.setDisplaySize(17,26)
-        this.add.sprite(340,50,'skeleton',0).setDisplaySize(30,50);
+        // this.add.sprite(340,50,'skeleton',0).setDisplaySize(30,50);
         this.add.text(100,15,"OBJECTIVES",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white',underline:true })
         this.add.text(400,40,"PRESS SPACE TO KILL GHOSTS",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
         this.wallet_text = this.add.text(80, 50, this.coincount+"/15", { fontFamily: 'Arial', fontSize: '20px', fill: 'white'});
@@ -88,8 +88,8 @@ class Maze3Scene extends Phaser.Scene{
         this.score_coin.play('round');
         this.kill_text = this.add.text(230,50,this.monsterCount +"/15",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
         this.monster = this.physics.add.sprite(200,60,'monster3').setDisplaySize(25,25);
-        this.add.text(900,10,"ESC: Pause/Play",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
-        this.add.text(780,10,"R: Restart",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
+        this.add.text(900,15,"ESC: Pause/Play",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
+        this.add.text(780,15,"R: Restart",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
         this.timerText = this.add.text(900, 50, 'Time: 45s', {
             fontSize: '24px',
             color: 'white'
