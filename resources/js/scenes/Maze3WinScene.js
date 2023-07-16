@@ -11,7 +11,6 @@ class Maze3WinScene extends Phaser.Scene{
     }
 
     create(){
-
         this.add.text(540, 200, 'Congratulations', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
         this.add.text(540, 310, 'You completed all Levels', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
 
