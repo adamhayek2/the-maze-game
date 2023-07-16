@@ -13,7 +13,7 @@ class Maze1Scene extends Phaser.Scene{
         this.monsterCount = 0;
         this.timer;
         this.timerText;
-        this.timeInSeconds = 15;
+        this.timeInSeconds = 20;
         this.wallet_text;
         this.kill_text;
 
@@ -95,7 +95,7 @@ class Maze1Scene extends Phaser.Scene{
         this.score_coin.play('round');
         this.add.text
 
-        this.timerText = this.add.text(800, 90, 'Time: 15s', {
+        this.timerText = this.add.text(800, 90, 'Time: 20s', {
             fontSize: '25px',
             color: 'white'
           });
