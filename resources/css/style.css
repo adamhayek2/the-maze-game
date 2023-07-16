@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-
-
-
 * {
     margin: 0;
     padding: 0;
@@ -38,6 +35,10 @@ header {
     user-select: none;
     position: sticky;
     top: 0;
+}
+
+.navigation {
+    display: flex;
 }
 .navigation a {
     position: relative;
@@ -118,6 +119,8 @@ header {
     width: 400px;
     z-index: 2;
 }
+
+
 /* ---------- Section - 2 ---------------- */
 
 .fade{
