@@ -1,4 +1,3 @@
-
 class Maze1WinScene extends Phaser.Scene{
     constructor(){
         super({

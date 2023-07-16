@@ -10,11 +10,17 @@ class Maze3WinScene extends Phaser.Scene{
         this.monsterCount = data[1]
     }
 
-    create(){
-        this.add.text(540, 200, 'Congratulations', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
-        this.add.text(540, 310, 'You completed all Levels', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
+    preload(){
+        this.load.image('win2', 'resources/assets/win2.gif');
+    }
 
-        this.add.text(540, 400, 'Coins Collected: ' + this.coincount+"/15", {
+    create(){
+        this.add.image(280,50,'win2').setOrigin(0,0);
+
+        
+        this.add.text(540, 280, 'You completed all Levels', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
+
+        this.add.text(540, 380, 'Coins Collected: ' + this.coincount+"/15", {
             fontSize: '32px',
             color: '#ffffff'
           }).setOrigin(0.5);
