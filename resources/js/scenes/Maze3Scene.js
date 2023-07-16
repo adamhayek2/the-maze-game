@@ -16,7 +16,7 @@ class Maze3Scene extends Phaser.Scene{
         this.kill_text;
         this.load.image('background3','resources/assets/halloween.png');
         this.load.image('monster3','resources/assets/ghost.png')
-        this.load.spritesheet('skeleton','resources/assets/skeleton.png',{frameWidth: 25, frameHeight: 25});
+        this.load.spritesheet('skeleton','resources/assets/skeleton1.png',{frameWidth: 17, frameHeight: 28});
         this.load.image('bush3','resources/assets/lava2.jpg');  
         this.load.spritesheet('coin', 'resources/assets/tile001.png', {
             frameWidth: 50,
@@ -39,19 +39,10 @@ class Maze3Scene extends Phaser.Scene{
         },this);
 
         this.anims.create({
-          key: 'right2',
+          key: 'down2',
           frames: this.anims.generateFrameNumbers('skeleton', {
-            start: 1,
-            end: 9
-          }),
-          frameRate: 15,
-          repeat: -1
-        });
-        this.anims.create({
-          key: 'up2',
-          frames: this.anims.generateFrameNumbers('skeleton', {
-            start: 10,
-            end: 17
+            start: 0,
+            end: 5
           }),
           frameRate: 15,
           repeat: -1
@@ -59,17 +50,26 @@ class Maze3Scene extends Phaser.Scene{
         this.anims.create({
           key: 'left2',
           frames: this.anims.generateFrameNumbers('skeleton', {
-            start: 18,
-            end: 26
+            start: 6,
+            end: 11
           }),
           frameRate: 15,
           repeat: -1
         });
         this.anims.create({
-          key: 'down2',
+          key: 'right2',
           frames: this.anims.generateFrameNumbers('skeleton', {
-            start: 27,
-            end: 35
+            start: 12,
+            end: 17
+          }),
+          frameRate: 15,
+          repeat: -1
+        });
+        this.anims.create({
+          key: 'up2',
+          frames: this.anims.generateFrameNumbers('skeleton', {
+            start: 18,
+            end: 23
           }),
           frameRate: 15,
           repeat: -1
@@ -79,8 +79,8 @@ class Maze3Scene extends Phaser.Scene{
         
         this.add.image(0,0,'background3').setOrigin(0,0);
         this.player = this.add.sprite(90,120,'skeleton',0);
-        this.player.setDisplaySize(29,29)
-        this.add.sprite(340,50,'skeleton',0).setDisplaySize(50,50);
+        this.player.setDisplaySize(17,26)
+        this.add.sprite(340,50,'skeleton',0).setDisplaySize(30,50);
         this.add.text(100,15,"OBJECTIVES",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white',underline:true })
         this.add.text(400,40,"PRESS SPACE TO KILL GHOSTS",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
         this.wallet_text = this.add.text(80, 50, this.coincount+"/15", { fontFamily: 'Arial', fontSize: '20px', fill: 'white'});

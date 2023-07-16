@@ -17,10 +17,10 @@ class Maze1Scene extends Phaser.Scene{
         this.wallet_text;
         this.kill_text;
 
-        this.load.image('background', 'resources/assets/beach.jpg');
-        this.load.spritesheet('boy','resources/assets/boy.png',{frameWidth: 35, frameHeight: 35});
+        this.load.image('background', 'resources/assets/easter.jpg');
+        this.load.spritesheet('bunny','resources/assets/bunny.png',{frameWidth: 18, frameHeight: 35});
         this.load.image('bush','resources/assets/parket_2.jpg'); 
-        this.load.image('monster','resources/assets/crab.png') 
+        this.load.spritesheet('eggs','resources/assets/eggs.png',{frameWidth: 23, frameHeight: 30});
         this.load.spritesheet('coin', 'resources/assets/tile001.png', {
             frameWidth: 50,
             frameHeight: 50
@@ -45,36 +45,36 @@ class Maze1Scene extends Phaser.Scene{
 
       this.anims.create({
         key: 'down',
-        frames: this.anims.generateFrameNumbers('boy', {
-          start: 1,
-          end: 4
+        frames: this.anims.generateFrameNumbers('bunny', {
+          start: 0,
+          end: 2
         }),
         frameRate: 15,
         repeat: -1
       });
       this.anims.create({
         key: 'left',
-        frames: this.anims.generateFrameNumbers('boy', {
-          start: 5,
-          end: 9
+        frames: this.anims.generateFrameNumbers('bunny', {
+          start: 3,
+          end: 5
         }),
         frameRate: 15,
         repeat: -1
       });
       this.anims.create({
         key: 'right',
-        frames: this.anims.generateFrameNumbers('boy', {
-          start: 10,
-          end: 14
+        frames: this.anims.generateFrameNumbers('bunny', {
+          start: 6,
+          end: 8
         }),
         frameRate: 15,
         repeat: -1
       });
       this.anims.create({
         key: 'up',
-        frames: this.anims.generateFrameNumbers('boy', {
-          start: 15,
-          end: 19
+        frames: this.anims.generateFrameNumbers('bunny', {
+          start: 9,
+          end: 11
         }),
         frameRate: 15,
         repeat: -1
@@ -82,22 +82,22 @@ class Maze1Scene extends Phaser.Scene{
 
 
         this.add.image(0,0,'background').setOrigin(0,0);
-        this.player = this.add.sprite(200,180,'boy',0);
-        this.player.setDisplaySize(32,32)
-        this.add.text(180,40,"OBJECTIVES",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black',underline:true })
-        this.wallet_text = this.add.text(190, 90, this.coincount + "/5", { fontFamily: 'Arial', fontSize: '20px', fill: 'black' });
-        this.kill_text = this.add.text(300,90,this.monsterCount +"/4",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black' })
-        this.add.text(400,90,"PRESS SPACE TO KILL CRABS",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black' })
-        this.add.text(900,10,"ESC: Pause/Play",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black' })
-        this.add.text(780,10,"R: Restart",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black' })
-        this.monster = this.physics.add.sprite(270,100,'monster').setDisplaySize(30,30);
+        this.player = this.add.sprite(200,180,'bunny',0);
+        this.player.setDisplaySize(22,32)
+        this.add.text(180,40,"OBJECTIVES",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white',underline:true })
+        this.wallet_text = this.add.text(190, 90, this.coincount + "/5", { fontFamily: 'Arial', fontSize: '20px', fill: 'white' });
+        this.kill_text = this.add.text(300,90,this.monsterCount +"/4",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
+        this.add.text(400,90,"PRESS SPACE TO HATCH THE EGGS",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
+        this.add.text(900,10,"ESC: Pause/Play",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
+        this.add.text(780,10,"R: Restart",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
+        this.monster = this.physics.add.sprite(270,100,'eggs',1).setDisplaySize(25,33);
         this.score_coin = this.physics.add.sprite(160, 100, 'coin');
         this.score_coin.play('round');
         this.add.text
 
         this.timerText = this.add.text(800, 90, 'Time: 15s', {
             fontSize: '25px',
-            color: 'black'
+            color: 'white'
           });
 
         // Start the timer
@@ -135,11 +135,12 @@ class Maze1Scene extends Phaser.Scene{
           ] 
 
           this.monster = [
-            this.physics.add.sprite(440,300,'monster').setDisplaySize(35,30),
-            this.physics.add.sprite(240,380,'monster').setDisplaySize(35,30),
-            this.physics.add.sprite(360,220,'monster').setDisplaySize(35,30),
-            this.physics.add.sprite(680,300,'monster').setDisplaySize(35,30),
-            this.physics.add.sprite(880,300,'monster').setDisplaySize(35,30),
+            this.physics.add.sprite(440,300,'eggs').setDisplaySize(23,30),
+            this.physics.add.sprite(240,380,'eggs').setDisplaySize(23,30),
+            this.physics.add.sprite(360,220,'eggs').setDisplaySize(23,30),
+            this.physics.add.sprite(680,300,'eggs').setDisplaySize(23,30),
+            this.physics.add.sprite(600,460,'eggs').setDisplaySize(23,30),
+            this.physics.add.sprite(880,300,'eggs').setDisplaySize(23,30),
           ]
 
           this.anims.create({
@@ -148,7 +149,16 @@ class Maze1Scene extends Phaser.Scene{
             frameRate: 10,
             repeat: -1
           });
-        
+          this.anims.create({
+            key: 'color',
+            frames: this.anims.generateFrameNumbers('eggs',{start:0, end: 5}),
+            frameRate: 1,
+            repeat: -1
+          });
+          
+          for(let i=0;i<this.monster.length;i++){
+            this.monster[i].play('color');
+          }
           for(let i=0;i<this.coin.length;i++){
             this.coin[i].play('round');
           }
