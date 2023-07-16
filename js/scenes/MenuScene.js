@@ -18,7 +18,7 @@
         let pressEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
 
         if(pressEnter.isDown){
-            this.scene.start(CST.SCENES.MAZE3);
+            this.scene.start(CST.SCENES.MAZE1);
         }
     }
     

@@ -6,7 +6,8 @@ class Maze2WinScene extends Phaser.Scene{
     }
     
     init(data){
-        this.coincount = data
+        this.coincount = data[0]
+        this.monsterCount = data[1]
     }
 
     create(){
@@ -17,8 +18,13 @@ class Maze2WinScene extends Phaser.Scene{
             fontSize: '32px',
             color: '#ffffff'
           }).setOrigin(0.5);
-  
-        this.add.text(540, 470, 'Press Enter to Continue', {
+
+        this.add.text(540, 430, 'Monsters Killed: ' + this.monsterCount+"/10", {
+            fontSize: '32px',
+            color: '#ffffff'
+          }).setOrigin(0.5);
+
+        this.add.text(540, 500, 'Press Enter to Continue', {
         fontSize: '24px',
         color: '#ffffff'
         }).setOrigin(0.5);;  

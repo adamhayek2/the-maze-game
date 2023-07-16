@@ -7,12 +7,16 @@ class Maze2Scene extends Phaser.Scene{
 
     preload(){
         this.coincount = 0;
+        this.monsterCount = 0;
         this.timer;
         this.timerText;
         this.timeInSeconds = 30;
         this.wallet_text;
-        this.load.image('player','js/scenes/assets/walking.png');
-        this.load.image('bush','js/scenes/assets/bush.png');  
+        this.kill_text;
+        this.load.image('background2', 'js/scenes/assets/snow.jpg');
+         this.load.image('monster2','js/scenes/assets/gift.png')
+        this.load.image('player2','js/scenes/assets/santa.png');
+        this.load.image('bush2','js/scenes/assets/bush.png');  
         this.load.spritesheet('coin', 'js/scenes/assets/tile001.png', {
             frameWidth: 50,
             frameHeight: 50
@@ -20,13 +24,16 @@ class Maze2Scene extends Phaser.Scene{
     }
 
     create(){
-
-        this.player = this.add.sprite(135,135,'player');
+        this.add.image(0,0,'background2').setOrigin(0,0);
+        this.player = this.add.sprite(135,135,'player2');
         this.player.setDisplaySize(20,30)
-
+        this.add.text(150,15,"OBJECTIVES",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white',underline:true })
+        this.add.text(400,50,"PRESS SPACE TO COLLECT GIFTS",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
         this.wallet_text = this.add.text(130, 50, this.coincount+"/10", { fontFamily: 'Arial', fontSize: '20px', fill: 'white' });
         this.score_coin = this.physics.add.sprite(100, 60, 'coin');
         this.score_coin.play('round');
+        this.monster = this.physics.add.sprite(250,60,'monster2').setDisplaySize(30,30);
+        this.kill_text = this.add.text(280,50,this.monsterCount +"/10",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
 
         this.timerText = this.add.text(850, 50, 'Time: 30s', {
             fontSize: '24px',
@@ -56,7 +63,7 @@ class Maze2Scene extends Phaser.Scene{
           }
 
         this.coin =[
-            this.physics.add.sprite(418,278,'coin'),
+            this.physics.add.sprite(135,278,'coin'),
             this.physics.add.sprite(768,275,'coin'),
             this.physics.add.sprite(905,315,'coin'),
             this.physics.add.sprite(945,135,'coin'),
@@ -78,6 +85,21 @@ class Maze2Scene extends Phaser.Scene{
             this.physics.add.sprite(418,205,'coin'),
             this.physics.add.sprite(800,205,'coin'),
         ];
+
+        this.monster = [
+          this.physics.add.sprite(135,240,'monster2').setDisplaySize(30,30),
+          this.physics.add.sprite(345,240,'monster2').setDisplaySize(30,30),
+          this.physics.add.sprite(485,240,'monster2').setDisplaySize(30,30),
+          this.physics.add.sprite(625,135,'monster2').setDisplaySize(30,30),
+          this.physics.add.sprite(695,345,'monster2').setDisplaySize(30,30),
+          this.physics.add.sprite(695,590,'monster2').setDisplaySize(30,30),
+          this.physics.add.sprite(520,520,'monster2').setDisplaySize(30,30),
+          this.physics.add.sprite(905,590,'monster2').setDisplaySize(30,30),
+          this.physics.add.sprite(905,485,'monster2').setDisplaySize(30,30),
+          this.physics.add.sprite(940,275,'monster2').setDisplaySize(30,30),
+          this.physics.add.sprite(135,450,'monster2').setDisplaySize(30,30),
+          this.physics.add.sprite(300,485,'monster2').setDisplaySize(30,30),
+        ]
 
         this.anims.create({
             key: 'round',
@@ -117,7 +139,7 @@ class Maze2Scene extends Phaser.Scene{
           ];
 
         for (let i = 0; i < this.bushes.length; i++) {
-            this.bush = this.add.sprite(this.bushes[i][0], this.bushes[i][1], 'bush');
+            this.bush = this.add.sprite(this.bushes[i][0], this.bushes[i][1], 'bush2');
             this.bush.setDisplaySize(this.bushSize,this.bushSize)
             this.bushes[i]=this.bush
         }
@@ -148,6 +170,21 @@ class Maze2Scene extends Phaser.Scene{
 
         this.speed = 3;
 
+        this.monster.forEach(monster => {
+          if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), monster.getBounds())) {
+            let pressEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        
+            if (!monster.isDisabled && Phaser.Input.Keyboard.JustDown(pressEnter)) {
+              monster.disableBody(true, true);
+              this.monsterCount++;
+              this.kill_text.setText(this.monsterCount+"/10");
+              monster.isDisabled = true;
+            } else if (!monster.isDisabled) {
+              this.scene.start(CST.SCENES.LOSE2);
+            }
+          }
+        });
+
         if (this.cursors.up.isDown && !this.checkCollision(this.player.x, this.player.y - this.speed)) {
             this.player.y -= this.speed;
         } else if (this.cursors.down.isDown && !this.checkCollision(this.player.x, this.player.y + this.speed)) {
@@ -160,8 +197,8 @@ class Maze2Scene extends Phaser.Scene{
         }
     
         if (this.player.x > 1000) {
-            if(this.coincount>9){
-            this.scene.start(CST.SCENES.WIN2,this.coincount);
+            if(this.coincount>9 && this.monsterCount>9){
+            this.scene.start(CST.SCENES.WIN2,[this.coincount,this.monsterCount]);
             }
             else{
             this.scene.start(CST.SCENES.LOSE2)

@@ -7,12 +7,16 @@ class Maze3Scene extends Phaser.Scene{
 
     preload(){
         this.coincount = 0;
+        this.monsterCount = 0;
         this.timer;
         this.timerText;
-        this.timeInSeconds = 30;
+        this.timeInSeconds = 60;
         this.wallet_text;
-        this.load.image('player','js/scenes/assets/walking.png');
-        this.load.image('bush','js/scenes/assets/bush.png');  
+        this.kill_text;
+        this.load.image('background3', 'js/scenes/assets/halloween.png');
+        this.load.image('monster3','js/scenes/assets/ghost.png')
+        this.load.image('player3','js/scenes/assets/kid.png');
+        this.load.image('bush3','js/scenes/assets/lava2.jpg');  
         this.load.spritesheet('coin', 'js/scenes/assets/tile001.png', {
             frameWidth: 50,
             frameHeight: 50
@@ -20,14 +24,18 @@ class Maze3Scene extends Phaser.Scene{
     }
 
     create(){
-        this.player = this.add.sprite(90,120,'player');
+        this.add.image(0,0,'background3').setOrigin(0,0);
+        this.player = this.add.sprite(90,120,'player3');
         this.player.setDisplaySize(15,25)
-
-        this.wallet_text = this.add.text(130, 50, this.coincount+"/15", { fontFamily: 'Arial', fontSize: '20px', fill: 'white'});
-        this.score_coin = this.physics.add.sprite(100, 60, 'coin');
+        this.add.text(100,15,"OBJECTIVES",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white',underline:true })
+        this.add.text(400,40,"PRESS SPACE TO KILL GHOSTS",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
+        this.wallet_text = this.add.text(80, 50, this.coincount+"/15", { fontFamily: 'Arial', fontSize: '20px', fill: 'white'});
+        this.score_coin = this.physics.add.sprite(60, 60, 'coin');
         this.score_coin.play('round');
+        this.kill_text = this.add.text(230,50,this.monsterCount +"/15",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
+        this.monster = this.physics.add.sprite(200,60,'monster3').setDisplaySize(30,30);
 
-        this.timerText = this.add.text(850, 50, 'Time: 30s', {
+        this.timerText = this.add.text(900, 50, 'Time: 60s', {
             fontSize: '24px',
             color: 'white'
           });
@@ -79,6 +87,28 @@ class Maze3Scene extends Phaser.Scene{
             this.physics.add.sprite(840,630,'coin'),
         ];
 
+        this.monster = [
+          this.physics.add.sprite(210,120,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(210,180,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(150,300,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(210,420,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(360,300,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(570,240,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(690,180,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(810,210,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(990,240,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(840,420,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(900,420,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(990,600,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(870,630,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(510,630,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(450,450,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(600,450,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(210,570,'monster3').setDisplaySize(25,30),
+          this.physics.add.sprite(300,450,'monster3').setDisplaySize(25,30),
+        
+        ]
+
         this.anims.create({
             key: 'round',
             frames: this.anims.generateFrameNumbers('coin',{start:0, end: 7}),
@@ -129,7 +159,7 @@ class Maze3Scene extends Phaser.Scene{
          ]
 
          for (let i = 0; i < this.bushes.length; i++) {
-            this.bush = this.add.sprite(this.bushes[i][0], this.bushes[i][1], 'bush');
+            this.bush = this.add.sprite(this.bushes[i][0], this.bushes[i][1], 'bush3');
             this.bush.setDisplaySize(this.bushSize,this.bushSize)
             this.bushes[i]=this.bush
         }
@@ -158,6 +188,21 @@ class Maze3Scene extends Phaser.Scene{
     update(){
         this.speed = 3;
 
+        this.monster.forEach(monster => {
+          if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), monster.getBounds())) {
+            let pressEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        
+            if (!monster.isDisabled && Phaser.Input.Keyboard.JustDown(pressEnter)) {
+              monster.disableBody(true, true);
+              this.monsterCount++;
+              this.kill_text.setText(this.monsterCount+"/15");
+              monster.isDisabled = true;
+            } else if (!monster.isDisabled) {
+              this.scene.start(CST.SCENES.LOSE3);
+            }
+          }
+        });
+
         if (this.cursors.up.isDown && !this.checkCollision(this.player.x, this.player.y - this.speed)) {
             this.player.y -= this.speed;
         } else if (this.cursors.down.isDown && !this.checkCollision(this.player.x, this.player.y + this.speed)) {
@@ -170,8 +215,8 @@ class Maze3Scene extends Phaser.Scene{
         }
     
         if (this.player.x > 1000) {
-            if(this.coincount>14){
-            this.scene.start(CST.SCENES.WIN3,this.coincount);
+            if(this.coincount>14 && this.monsterCount>14){
+            this.scene.start(CST.SCENES.WIN3,[this.coincount,this.monsterCount]);
             }
             else{
             this.scene.start(CST.SCENES.LOSE3)

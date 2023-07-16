@@ -8,14 +8,17 @@ class Maze1Scene extends Phaser.Scene{
     
     preload(){
         this.coincount = 0;
+        this.monsterCount = 0;
         this.timer;
         this.timerText;
         this.timeInSeconds = 15;
         this.wallet_text;
+        this.kill_text;
 
-        this.load.image('background', 'js/scenes/assets/Christmas.png');
-        this.load.image('player','js/scenes/assets/walking.png');
-        this.load.image('bush','js/scenes/assets/parket_2.jpg');  
+        this.load.image('background', 'js/scenes/assets/beach.jpg');
+        this.load.image('player','js/scenes/assets/fisherman.png');
+        this.load.image('bush','js/scenes/assets/parket_2.jpg'); 
+        this.load.image('monster','js/scenes/assets/crab.png') 
         this.load.spritesheet('coin', 'js/scenes/assets/tile001.png', {
             frameWidth: 50,
             frameHeight: 50
@@ -23,16 +26,20 @@ class Maze1Scene extends Phaser.Scene{
     }
 
     create(){
-        this.player = this.physics.add.sprite(190,180,'player');
-        this.player.setDisplaySize(20,30)
-
-        this.wallet_text = this.add.text(190, 90, this.coincount + "/5", { fontFamily: 'Arial', fontSize: '20px', fill: 'white' });
+        this.add.image(0,0,'background').setOrigin(0,0);
+        this.player = this.physics.add.sprite(200,180,'player');
+        this.player.setDisplaySize(30,35)
+        this.add.text(180,40,"OBJECTIVES",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black',underline:true })
+        this.wallet_text = this.add.text(190, 90, this.coincount + "/5", { fontFamily: 'Arial', fontSize: '20px', fill: 'black' });
+        this.kill_text = this.add.text(300,90,this.monsterCount +"/4",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black' })
+        this.add.text(400,90,"PRESS SPACE TO KILL CRABS",{ fontFamily: 'Arial', fontSize: '20px', fill: 'black' })
+        this.monster = this.physics.add.sprite(270,100,'monster').setDisplaySize(30,30);
         this.score_coin = this.physics.add.sprite(160, 100, 'coin');
         this.score_coin.play('round');
 
         this.timerText = this.add.text(800, 90, 'Time: 15s', {
-            fontSize: '24px',
-            color: '#ffffff'
+            fontSize: '25px',
+            color: 'black'
           });
 
         // Start the timer
@@ -67,6 +74,14 @@ class Maze1Scene extends Phaser.Scene{
             this.physics.add.sprite(680,420,'coin'),
             this.physics.add.sprite(560,260,'coin'),
           ] 
+
+          this.monster = [
+            this.physics.add.sprite(440,300,'monster').setDisplaySize(35,30),
+            this.physics.add.sprite(240,380,'monster').setDisplaySize(35,30),
+            this.physics.add.sprite(360,220,'monster').setDisplaySize(35,30),
+            this.physics.add.sprite(680,300,'monster').setDisplaySize(35,30),
+            this.physics.add.sprite(880,300,'monster').setDisplaySize(35,30),
+          ]
 
           this.anims.create({
             key: 'round',
@@ -134,6 +149,21 @@ class Maze1Scene extends Phaser.Scene{
 
         this.speed = 3;
 
+        this.monster.forEach(monster => {
+          if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), monster.getBounds())) {
+            let pressEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        
+            if (!monster.isDisabled && Phaser.Input.Keyboard.JustDown(pressEnter)) {
+              monster.disableBody(true, true);
+              this.monsterCount++;
+              this.kill_text.setText(this.monsterCount+"/4");
+              monster.isDisabled = true;
+            } else if (!monster.isDisabled) {
+              this.scene.start(CST.SCENES.LOSE1);
+            }
+          }
+        });
+
         // checking if the player is pressing an arrow and also not colliding with barriers.
         if (this.cursors.up.isDown && !this.checkCollision(this.player.x, this.player.y - this.speed)) {
             this.player.y -= this.speed;
@@ -146,10 +176,10 @@ class Maze1Scene extends Phaser.Scene{
             this.player.x += this.speed;
         }
     
-        if (this.player.x > 1000) {
+        if (this.player.x > 920) {
             // Game win 
-            if(this.coincount>4){
-            this.scene.start(CST.SCENES.WIN1,this.coincount);
+            if(this.coincount>4 && this.monsterCount>3){
+            this.scene.start(CST.SCENES.WIN1,[this.coincount,this.monsterCount]);
             }
             else{
             this.scene.start(CST.SCENES.LOSE1)
