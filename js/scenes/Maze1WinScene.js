@@ -10,16 +10,21 @@ class Maze1WinScene extends Phaser.Scene{
         this.coincount = data[0]
         this.monsterCount = data[1]
     }
+
+    preload(){
+        this.load.image('win', 'assets/win.png');
+    }
+
+
     create(){
+        this.add.image(200,0,'win').setOrigin(0,0);
 
-        this.add.text(540, 360, 'You Win!', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
-
-        this.add.text(540, 400, 'Coins Collected: ' + this.coincount+"/5", {
+        this.add.text(540, 350, 'Coins Collected: ' + this.coincount+"/5", {
             fontSize: '32px',
             color: '#ffffff'
           }).setOrigin(0.5);
         
-        this.add.text(540, 430, 'Crabs Killed: ' + this.monsterCount+"/4", {
+        this.add.text(540, 400, 'Crabs Killed: ' + this.monsterCount+"/4", {
             fontSize: '32px',
             color: '#ffffff'
           }).setOrigin(0.5);
