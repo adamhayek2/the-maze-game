@@ -1,29 +1,136 @@
 /* Styles for screens with a maximum width of 600px*/
 @media (max-width: 600px) {
-    .parallax img#home {
-        transform:scaleX(-1) translateX(-250px) translateY(200px) ;
+    header {
+        background-color: red;
+        padding: 10px;
     }
+    .logo {
+        font-size: 2em;
+    }
+    .navigation {
+        display: flex;
+        flex-direction: column;
+    }
+    .navigation a {
+        font-size: 0.6em;
+    }
+    #text {
+        font-size: 2.1em;
+    }
+
+    .parallax img#santa {
+        margin-bottom: 260px;
+        transform: translateY(440px);
+        width: 100px;
+    }
+    
+    .parallax img#home {
+        margin-bottom: -100px;
+        width: 200px;
+        transform:scaleX(-1) translateX(-400px) translateY(200px) ;
+    }
+
+    .parallax #snow-floor {
+        bottom: -30px;
+    }
+    
 }
 
   /* Styles for screens with a minimum width of 601px and a maximum width of 1024px */
-  @media (min-width: 600px) and (max-width: 900px) {
+@media (min-width: 600px) and (max-width: 900px) {
+    header {
+        background-color: green;
+        padding: 20px;
+    }
+    .logo {
+        font-size: 2.3em;
+    }
+    .navigation {
+        display: flex;
+        flex-direction: column;
+    }
+    .navigation a {
+        font-size: 0.7em;
+    }
+    #text {
+        font-size: 2.3em;
+    }
+
+    .parallax img#santa {
+        margin-bottom: 280px;
+        transform: translateY(440px);
+        width: 150px;
+    }
+    
     .parallax img#home {
-        transform:scaleX(-1) translateX(-600px) translateY(200px) ;
+        margin-bottom: -100px;
+        width: 250px;
+        transform:scaleX(-1) translateX(-650px) translateY(200px) ;
+    }
+
+    .parallax #snow-floor {
+        bottom: -80px;
     }
 }
-  
   /* Styles for screens with a minimum width of 601px and a maximum width of 1024px */
-  @media (min-width: 901px) and (max-width: 1399px) {
+@media (min-width: 901px) and (max-width: 1200px) {
+    header {
+        background-color: yellow;
+    }
+    .logo {
+        font-size: 3em;
+    }
+    .navigation {
+        display: flex;
+        flex-direction: column;
+    }
+    .navigation a {
+        font-size: 0.9em;
+    }
+    #text {
+        font-size: 2.5em;
+    }
+
+    .parallax img#santa {
+        margin-bottom: 260px;
+        transform: translateY(440px);
+        width: 150px;
+    }
+    
     .parallax img#home {
+        margin-bottom: -100px;
+        width: 250px;
+        z-index: 2;
+        transform:scaleX(-1) translateX(-950px) translateY(200px) ;
+    }
+
+    .parallax #snow-floor {
+        bottom: -90px;
+    }
+}
+
+@media (max-width: 1201px) {
+    header {
+        background-color: rgb(235, 82, 176);
+    }
+
+    .parallax img#santa {
+        margin-bottom: 350px;
+        transform: translateY(440px);
+        width: 200px;
+    }
+    
+    .parallax img#home {
+        margin-bottom: -80px;
+        width: 300px;
+        z-index: 2;
         transform:scaleX(-1) translateX(-1000px) translateY(200px) ;
     }
-}
-  
-  /* Styles for screens with a minimum width of 1025px */
-  @media (min-width: 1400px) {
-    .parallax img#home {
-        transform:scaleX(-1) translateX(-1200px) translateY(200px) ;
+
+    .parallax #snow-floor {
+        bottom: -100px;
     }
-} 
+}
+
 
 /* 876 */

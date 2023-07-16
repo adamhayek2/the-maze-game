@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-
-
-
 * {
     margin: 0;
     padding: 0;
@@ -37,6 +34,10 @@ header {
     user-select: none;
     position: sticky;
     top: 0;
+}
+
+.navigation {
+    display: flex;
 }
 .navigation a {
     position: relative;
@@ -116,6 +117,8 @@ header {
     width: 400px;
     z-index: 2;
 }
+
+
 /* ---------- Section - 2 ---------------- */
 
 .fade{
@@ -186,7 +189,6 @@ header {
     border-radius: 50px;
 }
 
-<<<<<<< HEAD
 .fade-2{
     position: absolute;
     z-index: 1;
@@ -271,7 +273,7 @@ header {
     transform: translateY(-200px);
     position: absolute;
 }
-=======
+
 
 
 /* ------------------------------------------------------------ */
@@ -316,4 +318,4 @@ footer .media .media-links img {
     width: 30px;
     height: 30px;
 }
->>>>>>> b0ad7da89d16da7eeeb4d704f72f2904de3f20f0
+
