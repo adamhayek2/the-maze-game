@@ -22,12 +22,12 @@ class Maze3WinScene extends Phaser.Scene{
 
         this.add.text(540, 380, 'Coins Collected: ' + this.coincount+"/15", {
             fontSize: '32px',
-            color: '#ffffff'
+            color: 'yellow'
           }).setOrigin(0.5);
         
         this.add.text(540, 430, 'Ghosts Killed: ' + this.monsterCount+"/15", {
             fontSize: '32px',
-            color: '#ffffff'
+            color: 'red'
           }).setOrigin(0.5);
         this.add.text(540, 500, 'Press Enter to Exit Game', {
         fontSize: '24px',
