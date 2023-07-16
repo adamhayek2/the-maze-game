@@ -269,7 +269,7 @@ header {
 #bats{
     position: absolute;
     z-index: 2;
-    transform: translateX(750px) translateY(-300px);
+    transform: translateX(750px) translateY(-400px);
     z-index: -1;
 }
 #grass{
@@ -288,6 +288,7 @@ header {
     text-align: center;
     width: 500px;
     margin: auto;
+    cursor: pointer;
 }
 #button h5{
     z-index: 2;

@@ -13,7 +13,11 @@ let text = document.querySelector('.text-2')
 let innerText = document.querySelector('.innerText')
 let secondSectionHeight = aboutGame.offsetHeight;
 let thirdSectionHeight = thirdSection.offsetHeight;
-
+let buttun =  document.getElementById("button");
+buttun.addEventListener("click", function(){
+  window.location.href = "game.html";
+}
+),
 
 
 window.addEventListener('scroll', () =>{
@@ -23,12 +27,11 @@ window.addEventListener('scroll', () =>{
     descText.style.transform = value >=1000 ? `translateY(${value / (secondSectionHeight ) * 600 - 600}px)` : 0;
     descImg.style.transform = value >=1000 ? `translateY(${value / (secondSectionHeight ) * -300 + 300}px)` : 0;
     cta.style.clipPath = value >= thirdSectionHeight ? "circle("+ (value-2000) * 0.6 +"px at center center)" : "circle(0px at center center)";
-    bats.style.transform = value >= thirdSectionHeight ? `translateX(750px) translateY(${value / (thirdSectionHeight) * -150 + 100}px)` : 0;
-    // text.style.left = 100 - value/5 + '%';
-    // innerText.style.left = 100 - value/5 + '%';
-    
+    bats.style.transform = value >= thirdSectionHeight ? `translateX(750px) translateY(${value / (thirdSectionHeight) * -250 + 100}px)` : 0;
     
 })
+
+
 
 // Snow from https://codepen.io/radum/pen/xICAB
 window.addEventListener("load", function () {
