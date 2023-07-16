@@ -1,20 +1,32 @@
 
-let gateLeft = document.getElementById('santa');
-let gateRight = document.getElementById('gate-right');
+
+
+let santa = document.getElementById('santa');
 let heroParallax = document.getElementById("hero-parallax");
+let aboutGame = document.getElementById("aboutGame");
 let descText = document.getElementById("descText");
 let descImg = document.getElementById("descImg");
-let aboutGame = document.getElementById("aboutGame");
+let thirdSection = document.getElementById("thirdSection");
+let cta = document.getElementById('cta');
+let bats = document.getElementById('bats');
+let text = document.querySelector('.text-2')
+let innerText = document.querySelector('.innerText')
+let secondSectionHeight = aboutGame.offsetHeight;
+let thirdSectionHeight = thirdSection.offsetHeight;
 
 
 
 window.addEventListener('scroll', () =>{
     let value = window.scrollY;
-    gateLeft.style.left = value * 1.8+ 'px';
-    heroParallax.style.backgroundPositionY = value * +.4 + 'px';
-    descText.style.Top = value * 1.5+ 'px';
-    descImg.style.top = value * 1.5+ 'px';
-  
+    santa.style.left = value <=1000 ? value * 1.8+ 'px' : 0;
+    heroParallax.style.backgroundPositionY = value * +0.4 + 'px';
+    descText.style.transform = value >=1000 ? `translateY(${value / (secondSectionHeight ) * 600 - 600}px)` : 0;
+    descImg.style.transform = value >=1000 ? `translateY(${value / (secondSectionHeight ) * -300 + 300}px)` : 0;
+    cta.style.clipPath = value >= thirdSectionHeight ? "circle("+ (value-2000) * 0.6 +"px at center center)" : "circle(0px at center center)";
+    bats.style.transform = value >= thirdSectionHeight ? `translateX(750px) translateY(${value / (thirdSectionHeight) * -100 + +100}px)` : 0;
+    // text.style.left = 100 - value/5 + '%';
+    // innerText.style.left = 100 - value/5 + '%';
+    
     
 })
 
