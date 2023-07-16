@@ -186,3 +186,48 @@ header {
     object-fit: cover;
     border-radius: 50px;
 }
+
+
+
+/* ------------------------------------------------------------ */
+
+
+footer {
+    height: 20vh;
+}
+.footer-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+footer .links {
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+footer .links a {
+    position: relative;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 6px 15px;
+    transition: .5s;
+    border-radius: 30px;
+    position: sticky;
+    top: 0;
+}
+.media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+footer .media .media-links img {
+    width: 30px;
+    height: 30px;
+}
