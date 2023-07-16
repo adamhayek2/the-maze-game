@@ -122,7 +122,7 @@
     }
 }
 
-@media (max-width: 1201px) {
+@media (min-width: 1201px) {
     header {
         background-color: rgb(235, 82, 176);
     }
