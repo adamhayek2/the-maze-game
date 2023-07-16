@@ -1,14 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-
-
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Press Start 2P', cursive;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -16,9 +14,8 @@ html {
 body {
     min-height: 100vh;
     overflow-x: hidden;
-    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-    filter: drop-shadow(0 0 10px white);
-}  
+    background: #5f64a5;
+}
 
 header {
     position: absolute;
@@ -39,6 +36,11 @@ header {
     position: sticky;
     top: 0;
 }
+
+.navigation {
+    display: flex;
+}
+
 .navigation a {
     position: relative;
     font-size: 1.5em;
@@ -52,13 +54,14 @@ header {
     position: sticky;
     top: 0;
 }
-.navigation a:hover, 
-.navigation a.active
-{
+
+.navigation a:hover,
+.navigation a.active {
     color: #fff;
     background-color: #000;
 }
-.navigation a:hover span , 
+
+.navigation a:hover span,
 .navigation a.active span {
     transform: scale(1);
     opacity: 1;
@@ -68,27 +71,21 @@ header {
     height: 100%;
     color: #000000;
     display: block;
-    background-image:  url('/resources/images/hero-section/background.png') ;
+    background-image: url('/resources/images/hero-section/background.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
 .parallax {
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     background-image: url('/resources/images/hero-section/background-2.png');
-    transform: translateY(-77px);
 }
 
 #text {
     position: absolute;
     font-size: 3.1em;
     color: #1b283a;
-    text-shadow: 2px 4px 5px #f9f9f9;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
@@ -97,34 +94,54 @@ header {
     z-index: 1;
 }
 
-.parallax img {
+.parallax img:not(#home) {
     position: absolute;
     left: 0;
+    bottom: 0;
     width: 100%;
     pointer-events: none;
 }
 
+/* ---------------- */
+.c_flex {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    align-items: center;
+    position: absolute;
+    bottom: 30px;
+}
+
+
+
+/* ---------------- */
+
+
+
 .parallax img#santa {
-    margin-bottom: 200px;
-    transform: translateY(440px);
+    /* margin-bottom: 200px; */
+    /* transform: translateY(440px); */
     width: 150px;
     z-index: 3;
 
 }
 
 .parallax img#home {
-    position: fixed;
-    transform: translateX(1400px) translateY(250px) ;
-    width: 400px;
+    /* position: fixed;
+    transform: translateX(1400px) translateY(250px); */
+    width: 300px;
+    transform: rotateY(190deg);
     z-index: 2;
 }
+
+
 /* ---------- Section - 2 ---------------- */
 
-.fade{
+.fade {
     position: absolute;
     z-index: 1;
     transform: translateY(-20px);
-    
+
     width: 100vw;
     color: #d2e8ff;
 }
@@ -143,24 +160,27 @@ header {
     justify-content: center;
     align-items: flex-start;
     gap: 10%;
-    padding-top: 500px;
+    padding-top: 65vh;
     background-attachment: fixed;
+    height: 150vh;
 
 }
+
 .text {
     font-size: 1.2em;
     color: #fff;
-    font-weight:100;
+    font-weight: 100;
     text-align: justify;
     display: flex;
     flex-direction: column;
     gap: 10%;
     transform-style: preserve-3d;
     transition: transform 0.05s linear;
-    transform: translateY(-700px);
+    transform: translateY(-50px);
     position: relative;
     top: 100px;
 }
+
 .sec .text h2 {
     font-size: 2em;
     margin-bottom: 10px;
@@ -182,7 +202,151 @@ header {
     border-radius: 50px;
 
 }
+
 .content img {
     object-fit: cover;
     border-radius: 50px;
+}
+
+.fade-2 {
+    position: absolute;
+    z-index: 1;
+    transform: translateY(-99%);
+    width: 100vw;
+}
+
+
+
+
+
+/* ---------------- section - 3 ----------- */
+
+h3 {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -100px;
+    color: #0e112e;
+    font-size: 4em;
+}
+
+.cta {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgb(255, 141, 0);
+    background: radial-gradient(circle, #fee68c 20%, rgba(255, 185, 0, 1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: circle(100px at center center);
+    z-index: -1;
+}
+
+.innerText {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    z-index: 1;
+    font-size: 10vw;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    left: 100%;
+}
+
+.text2 {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    z-index: 1;
+    font-size: 10vw;
+    color: transparent;
+    -webkit-text-stroke: 2px #0e112e;
+    left: 100%;
+    text-align: center;
+    width: 100%;
+}
+
+.container {
+    position: relative;
+    margin-top: 130vh;
+
+    background-color: #2e205e;
+    color: #fff;
+}
+
+.container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+
+}
+
+#bats {
+    position: absolute;
+    right: 50%;
+    z-index: 2;
+    transform: translateX(-50%) translateY(-300px);
+    z-index: -1;
+}
+
+#grass {
+    transform: translateY(-100%);
+}
+
+.third-section-text {
+    padding: 100px;
+}
+
+
+/* ------------------------------------------------------------ */
+
+
+footer {
+    height: 20vh;
+}
+
+.footer-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer .links {
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+
+footer .links a {
+    position: relative;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 6px 15px;
+    transition: .5s;
+    border-radius: 30px;
+    position: sticky;
+    top: 0;
+}
+
+.media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+footer .media .media-links img {
+    width: 30px;
+    height: 30px;
 }
