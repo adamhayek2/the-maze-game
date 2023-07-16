@@ -6,10 +6,10 @@ class Maze3LostScene extends Phaser.Scene{
     }
 
     create(){
-        this.add.text(540, 360, 'Game Over!', { fontSize: '64px', fill: '#ffffff' }).setOrigin(0.5);
-        this.add.text(540, 470, 'Press Enter to Play again', {
+        this.add.text(540, 290, 'Game Over!', { fontSize: '72px', fill: 'red', fontWeight: 'bold' }).setOrigin(0.5);
+        this.add.text(540, 370, 'Press Enter to Play again', {
             fontSize: '24px',
-            color: '#ffffff'
+            color: 'white'
           }).setOrigin(0.5);
              
     }
