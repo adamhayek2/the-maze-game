@@ -10,7 +10,7 @@ class Maze3Scene extends Phaser.Scene{
         this.monsterCount = 0;
         this.timer;
         this.timerText;
-        this.timeInSeconds = 60;
+        this.timeInSeconds = 45;
         this.wallet_text;
         this.kill_text;
         this.load.image('background3', 'assets/halloween.png');
@@ -35,7 +35,7 @@ class Maze3Scene extends Phaser.Scene{
         this.kill_text = this.add.text(230,50,this.monsterCount +"/15",{ fontFamily: 'Arial', fontSize: '20px', fill: 'white' })
         this.monster = this.physics.add.sprite(200,60,'monster3').setDisplaySize(30,30);
 
-        this.timerText = this.add.text(900, 50, 'Time: 60s', {
+        this.timerText = this.add.text(900, 50, 'Time: 45s', {
             fontSize: '24px',
             color: 'white'
           });
