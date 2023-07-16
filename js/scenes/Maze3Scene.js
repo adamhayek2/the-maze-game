@@ -13,11 +13,11 @@ class Maze3Scene extends Phaser.Scene{
         this.timeInSeconds = 60;
         this.wallet_text;
         this.kill_text;
-        this.load.image('background3', 'js/scenes/assets/halloween.png');
-        this.load.image('monster3','js/scenes/assets/ghost.png')
-        this.load.image('player3','js/scenes/assets/kid.png');
-        this.load.image('bush3','js/scenes/assets/lava2.jpg');  
-        this.load.spritesheet('coin', 'js/scenes/assets/tile001.png', {
+        this.load.image('background3', 'assets/halloween.png');
+        this.load.image('monster3','assets/ghost.png')
+        this.load.image('player3','assets/kid.png');
+        this.load.image('bush3','assets/lava2.jpg');  
+        this.load.spritesheet('coin', 'assets/tile001.png', {
             frameWidth: 50,
             frameHeight: 50
         });

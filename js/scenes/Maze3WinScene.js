@@ -19,7 +19,7 @@ class Maze3WinScene extends Phaser.Scene{
             color: '#ffffff'
           }).setOrigin(0.5);
         
-        this.add.text(540, 430, 'Monsters Killed: ' + this.monsterCount+"/150", {
+        this.add.text(540, 430, 'Ghosts Killed: ' + this.monsterCount+"/15", {
             fontSize: '32px',
             color: '#ffffff'
           }).setOrigin(0.5);

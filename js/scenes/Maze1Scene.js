@@ -15,11 +15,11 @@ class Maze1Scene extends Phaser.Scene{
         this.wallet_text;
         this.kill_text;
 
-        this.load.image('background', 'js/scenes/assets/beach.jpg');
-        this.load.image('player','js/scenes/assets/fisherman.png');
-        this.load.image('bush','js/scenes/assets/parket_2.jpg'); 
-        this.load.image('monster','js/scenes/assets/crab.png') 
-        this.load.spritesheet('coin', 'js/scenes/assets/tile001.png', {
+        this.load.image('background', 'assets/beach.jpg');
+        this.load.image('player','assets/fisherman.png');
+        this.load.image('bush','assets/parket_2.jpg'); 
+        this.load.image('monster','assets/crab.png') 
+        this.load.spritesheet('coin', 'assets/tile001.png', {
             frameWidth: 50,
             frameHeight: 50
         });

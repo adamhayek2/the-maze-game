@@ -13,11 +13,11 @@ class Maze2Scene extends Phaser.Scene{
         this.timeInSeconds = 30;
         this.wallet_text;
         this.kill_text;
-        this.load.image('background2', 'js/scenes/assets/snow.jpg');
-         this.load.image('monster2','js/scenes/assets/gift.png')
-        this.load.image('player2','js/scenes/assets/santa.png');
-        this.load.image('bush2','js/scenes/assets/bush.png');  
-        this.load.spritesheet('coin', 'js/scenes/assets/tile001.png', {
+        this.load.image('background2', 'assets/snow.jpg');
+         this.load.image('monster2','assets/gift.png')
+        this.load.image('player2','assets/santa.png');
+        this.load.image('bush2','assets/bush.png');  
+        this.load.spritesheet('coin', 'assets/tile001.png', {
             frameWidth: 50,
             frameHeight: 50
         });
