@@ -11,16 +11,23 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/landing1.png" alt="Game Screen 1" width="300">
-  <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/landing1.png" alt="Game Screen 1" width="300">
-  <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/game1.png" alt="Full Screen 1" width="300">
-  <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/game2.png" alt="Full Screen 1" width="300">
+  <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/landing1.png" alt="Game Screen 1" width="100%">
+  <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/landing1.png" alt="Game Screen 1" width="100%">
+  <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/game1.png" alt="Full Screen 1" width="100%">
+  <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/game2.png" alt="Full Screen 1" width="100%">
 </p>
 
 ## Contact Information
 
 If you have any questions or suggestions, feel free to reach out to me:
+#team Leader: Adam Hayek
+📧 Email: [adamhayek5@gmail.com](mailto:adamhayek5@gmail.com)
+💼 LinkedIn: [Adam Hayek](https://www.linkedin.com/in/adam-hayek-a96147182?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BKonzYvlQQ12FLfVkaySmkg%3D%3D)
+📱 Phone number: [+96171606301](https://api.whatsapp.com/send?phone=96171606301)
 
+</br>
+
+#team member 1: Sally AbdulHafiz
 📧 Email: [adamhayek5@gmail.com](mailto:adamhayek5@gmail.com)
 💼 LinkedIn: [Adam Hayek](https://www.linkedin.com/in/adam-hayek-a96147182?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BKonzYvlQQ12FLfVkaySmkg%3D%3D)
 📱 Phone number: [+96171606301](https://api.whatsapp.com/send?phone=96171606301)
