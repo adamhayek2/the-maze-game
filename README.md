@@ -20,16 +20,58 @@
 ## Contact Information
 
 If you have any questions or suggestions, feel free to reach out to me:
+
+</br>
+
 #team Leader: Adam Hayek
+
+</br>
+
 📧 Email: [adamhayek5@gmail.com](mailto:adamhayek5@gmail.com)
 💼 LinkedIn: [Adam Hayek](https://www.linkedin.com/in/adam-hayek-a96147182?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BKonzYvlQQ12FLfVkaySmkg%3D%3D)
 📱 Phone number: [+96171606301](https://api.whatsapp.com/send?phone=96171606301)
 
 </br>
 
-#team member 1: Sally AbdulHafiz
-📧 Email: [adamhayek5@gmail.com](mailto:adamhayek5@gmail.com)
-💼 LinkedIn: [Adam Hayek](https://www.linkedin.com/in/adam-hayek-a96147182?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BKonzYvlQQ12FLfVkaySmkg%3D%3D)
-📱 Phone number: [+96171606301](https://api.whatsapp.com/send?phone=96171606301)
+#team member 1: Sally Abd Al-Hafeez
+
+</br>
+
+📧 Email: [sallyabdalhafeez@gmail.com](mailto:sallyabdalhafeez@gmail.com)
+💼 LinkedIn: [Sally Abd Al-Hafeez](https://www.linkedin.com/in/sally-abd-alhafeez/)
+📱 Phone number: [+96170629021](https://api.whatsapp.com/send?phone=96170629021)
+
+
+</br>
+
+#team Member 2: Omar Krayyem
+
+</br>
+
+📧 Email: [omar.krayyem9@gmail.com](mailto:omar.krayyem9@gmail.com)
+💼 LinkedIn: [Omar Krayyem](https://www.linkedin.com/in/omar-krayyem-28a816243/)
+📱 Phone number: [+96181766990](https://api.whatsapp.com/send?phone=96181766990)
+
+</br>
+
+#team member 3: Mohammad Assi
+
+</br>
+
+📧 Email: [mohammad.f.assi96@gmail.com](mailto:mohammad.f.assi96@gmail.com)
+💼 LinkedIn: [Adam Hayek](https://www.linkedin.com/in/mohammed-assi-a386b3211/)
+📱 Phone number: [+96176925644](https://api.whatsapp.com/send?phone=96176925644)
+
+</br>
+
+#team member 4: Youssef Houssein
+
+</br>
+
+📧 Email: [youssefhoussein701@gmail.com](youssefhoussein701@gmail.com)
+💼 LinkedIn: [Youssef Houssein](https://www.linkedin.com/in/youssef-houssein-855aab248/)
+📱 Phone number: [+961 81096824](https://api.whatsapp.com/send?phone=96181096824)
+
+</br>
 
 <h5>Thank you for your time! Any feedback or comment on the project is greatly appreciated.</h5>
