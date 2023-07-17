@@ -11,8 +11,8 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/landing2.png" alt="Game Screen 1" width="100%">
-  <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/langing1.png" alt="Game Screen 1" width="100%">
+  <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/langing2.png" alt="Game Screen 1" width="100%">
+  <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/landing1.png" alt="Game Screen 1" width="100%">
   <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/game1.png" alt="Full Screen 1" width="100%">
   <img src="https://github.com/adamhayek2002/the-maze-game/blob/main/resources/images/readmeFile/game2.png" alt="Full Screen 1" width="100%">
 </p>
