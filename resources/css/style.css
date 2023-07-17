@@ -71,7 +71,7 @@ header {
     height: 100%;
     color: #000000;
     display: block;
-    background-image:  url('resources/images/hero-section/background.png') ;
+    background-image:  url('../images/hero-section/background.png') ;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -83,7 +83,7 @@ header {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('resources/images/hero-section/background-2.png');
+    background-image: url('../images/hero-section/background-2.png');
     transform: translateY(-77px);
 }
 
@@ -136,7 +136,7 @@ header {
 /* ---------- Section - 2 ---------------- */
 .sec {
     position: relative;
-    background-image: url("resources/images/about-sec/parket_2.jpg");
+    background-image: url("../images/about-sec/parket_2.jpg");
     background-size: 100px;
     background-repeat: repeat;
     background-color: #441316;
